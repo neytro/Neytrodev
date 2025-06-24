@@ -37,7 +37,7 @@ class MyApp extends StatelessWidget {
             return supportedLocale;
           }
         }
-        // Jeśli język nieobsługiwany – wróć do angielskiego
+
         return const Locale('en');
       },
       theme: ThemeData(
