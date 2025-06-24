@@ -10,4 +10,7 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get clearlist => 'Очистить список';
+
+  @override
+  String get sharewhatsapp => 'Share Whatsapp';
 }

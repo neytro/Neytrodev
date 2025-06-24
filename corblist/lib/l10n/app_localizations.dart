@@ -109,6 +109,12 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Clear list'**
   String get clearlist;
+
+  /// No description provided for @sharewhatsapp.
+  ///
+  /// In en, this message translates to:
+  /// **'Share Whatsapp'**
+  String get sharewhatsapp;
 }
 
 class _AppLocalizationsDelegate
