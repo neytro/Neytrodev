@@ -109,19 +109,16 @@ class _MyHomePageState extends State<MyHomePage> {
           IconButton(
             icon: Icon(Icons.search),
             onPressed: () {
-              print('Search clicked');
             },
           ),
           IconButton(
             icon: Icon(Icons.add),
             onPressed: () {
-              print('Plus clicked');
             },
           ),
 
           PopupMenuButton<String>(
             onSelected: (value) {
-              print('Menu selected: $value');
             },
             itemBuilder: (BuildContext context) => [
               PopupMenuItem(value: 'clearlist', child: Text(AppLocalizations.of(context)!.clearlist)),
