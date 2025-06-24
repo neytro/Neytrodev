@@ -1,7 +1,11 @@
+import 'package:corblist/l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
+
 
 void main() {
   runApp(const MyApp());
+
 }
 
 class MyApp extends StatelessWidget {
@@ -11,7 +15,31 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: 'Localizations Sample App',
+      localizationsDelegates: [
+        AppLocalizations.delegate, // Add this line
+        GlobalMaterialLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate,
+        GlobalCupertinoLocalizations.delegate,
+      ],
+      supportedLocales: [
+        Locale('pl'), // Spanish
+        Locale('ru'), // Spanish
+        Locale('es'), // Spanish
+        Locale('de'), // Spanish
+        Locale('en'), // English
+      ],
+      localeResolutionCallback: (locale, supportedLocales) {
+        if (locale == null) return const Locale('en');
+
+        for (var supportedLocale in supportedLocales) {
+          if (supportedLocale.languageCode == locale.languageCode) {
+            return supportedLocale;
+          }
+        }
+        // Jeśli język nieobsługiwany – wróć do angielskiego
+        return const Locale('en');
+      },
       theme: ThemeData(
         // This is the theme of your application.
         //
@@ -96,7 +124,7 @@ class _MyHomePageState extends State<MyHomePage> {
               print('Menu selected: $value');
             },
             itemBuilder: (BuildContext context) => [
-              PopupMenuItem(value: 'Opcja 100', child: Text('Opcja 1')),
+              PopupMenuItem(value: 'clearlist', child: Text(AppLocalizations.of(context)!.clearlist)),
 
             ],
           ),
