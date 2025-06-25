@@ -125,6 +125,7 @@ class _MyHomePageState extends State<MyHomePage> {
             },
             itemBuilder: (BuildContext context) => [
               PopupMenuItem(value: 'clearlist', child: Text(AppLocalizations.of(context)!.clearlist)),
+              PopupMenuItem(value: 'sharewhatsapp', child: Text(AppLocalizations.of(context)!.sharewhatsapp)),
 
             ],
           ),
