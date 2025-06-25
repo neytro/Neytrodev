@@ -23,11 +23,14 @@ class MyApp extends StatelessWidget {
         GlobalCupertinoLocalizations.delegate,
       ],
       supportedLocales: [
-        Locale('pl'), // Spanish
-        Locale('ru'), // Spanish
-        Locale('es'), // Spanish
-        Locale('de'), // Spanish
-        Locale('en'), // English
+        Locale('pl'),
+        Locale('ar'),
+        Locale('fr'),
+        Locale('zh'),
+        Locale('ru'),
+        Locale('es'),
+        Locale('de'),
+        Locale('en'),
       ],
       localeResolutionCallback: (locale, supportedLocales) {
         if (locale == null) return const Locale('en');

@@ -12,5 +12,5 @@ class AppLocalizationsDe extends AppLocalizations {
   String get clearlist => 'Liste leeren';
 
   @override
-  String get sharewhatsapp => 'Share Whatsapp';
+  String get sharewhatsapp => 'WhatsApp teilen';
 }
