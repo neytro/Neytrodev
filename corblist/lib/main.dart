@@ -8,6 +8,12 @@ void main() {
 
 }
 
+class Item {
+  bool checked;
+  String text;
+  Item({required this.checked, required this.text});
+}
+
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
@@ -86,6 +92,8 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   int _counter = 0;
+  List<Item> items = List.generate(10, (index) => Item(checked: false, text: 'Item $index'),
+  );
 
   void _incrementCounter() {
     setState(() {
@@ -106,6 +114,7 @@ class _MyHomePageState extends State<MyHomePage> {
     // The Flutter framework has been optimized to make rerunning build methods
     // fast, so that you can just rebuild anything that needs updating rather
     // than having to individually change instances of widgets.
+
     return Scaffold(
       appBar: AppBar(
         actions: [
@@ -138,25 +147,48 @@ class _MyHomePageState extends State<MyHomePage> {
         // the App.build method, and use it to set our appbar title.
         title: Text(widget.title),
       ),
-      body: Center(
-        // Center is a layout widget. It takes a single child and positions it
-        // in the middle of the parent.
-        child: Column(
-          // Column is also a layout widget. It takes a list of children and
-          // arranges them vertically. By default, it sizes itself to fit its
-          // children horizontally, and tries to be as tall as its parent.
-          //
-          // Column has various properties to control how it sizes itself and
-          // how it positions its children. Here we use mainAxisAlignment to
-          // center the children vertically; the main axis here is the vertical
-          // axis because Columns are vertical (the cross axis would be
-          // horizontal).
-          //
-          // TRY THIS: Invoke "debug painting" (choose the "Toggle Debug Paint"
-          // action in the IDE, or press "p" in the console), to see the
-          // wireframe for each widget.
+      body: ReorderableListView.builder(
+        itemCount: items.length,
+        onReorder: (oldIndex, newIndex) {
+          setState(() {
+            if (newIndex > oldIndex) newIndex--;
+            final item = items.removeAt(oldIndex);
+            items.insert(newIndex, item);
+          });
+        },
+        itemBuilder: (context, index) {
+          final item = items[index];
+          return ListTile(
+            key: ValueKey(item.text),
+            title: Row(
+              children: [
+                Checkbox(
+                  value: item.checked,
+                  onChanged: (value) {
+                    setState(() {
+                      item.checked = value ?? false;
+                    });
+                  },
+                ),
+                Expanded(
+                  child: Text(item.text),
+                ),
+                Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
 
-        ),
+                    IconButton(
+                      icon: const Icon(Icons.camera_alt),
+                      onPressed: () {
+                        // Akcja info
+                      },
+                    ),
+                  ],
+                ),
+              ],
+            ),
+          );
+        },
       ),
      // This trailing comma makes auto-formatting nicer for build methods.
     );
