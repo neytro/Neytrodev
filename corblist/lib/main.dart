@@ -94,7 +94,13 @@ class _MyHomePageState extends State<MyHomePage> {
   int _counter = 0;
   List<Item> items = List.generate(10, (index) => Item(checked: false, text: 'Item $index'),
   );
-
+  Widget _buildItem({required int index, required bool isBeingDragged}) {
+    return ListTile(
+      key: ValueKey(items[index]),
+      title: Text(items[index].text),
+      tileColor: isBeingDragged ? Colors.lightBlue : Colors.white,
+    );
+  }
   void _incrementCounter() {
     setState(() {
       // This call to setState tells the Flutter framework that something has
@@ -154,38 +160,64 @@ class _MyHomePageState extends State<MyHomePage> {
             if (newIndex > oldIndex) newIndex--;
             final item = items.removeAt(oldIndex);
             items.insert(newIndex, item);
+
           });
         },
+        proxyDecorator: (child, index, animation) => Material(
+          type: MaterialType.transparency,
+          child: _buildItem(index: index, isBeingDragged: true),
+        ),
+
         itemBuilder: (context, index) {
           final item = items[index];
-          return ListTile(
-            key: ValueKey(item.text),
-            title: Row(
-              children: [
-                Checkbox(
-                  value: item.checked,
-                  onChanged: (value) {
-                    setState(() {
-                      item.checked = value ?? false;
-                    });
-                  },
-                ),
-                Expanded(
-                  child: Text(item.text),
-                ),
-                Column(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
 
-                    IconButton(
-                      icon: const Icon(Icons.camera_alt),
-                      onPressed: () {
-                        // Akcja info
-                      },
-                    ),
-                  ],
-                ),
-              ],
+          return Container(
+            key: ValueKey(item.text),
+            decoration: item.checked ? BoxDecoration(color: Colors.redAccent):
+            BoxDecoration(border: Border(bottom: BorderSide(color: Theme.of(context).dividerColor, width: 0.5))),
+
+            child: ListTile(
+
+              title: Row(
+
+                children: [
+                  Checkbox(
+                    value: item.checked,
+                    onChanged: (value) {
+                      setState(() {
+                        item.checked = value ?? false;
+                      });
+                    },
+                  ),
+                  Expanded(
+                    child: Text(item.text),
+                  ),
+                  Column(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+
+                      IconButton(
+                        icon: const Icon(Icons.camera_alt),
+                        onPressed: () {
+                          // Akcja info
+                        },
+                      ),
+                      if (index < items.length - 1)
+                        const Divider(
+                          height: 5,
+                          thickness: 5,
+                          color: Colors.lightBlue,
+                        ),
+                    ],
+
+                  ),
+                  Divider(
+                    height: 1,
+                    thickness: 1,
+                    color: Colors.lightBlue,
+                  ),
+                ],
+              ),
             ),
           );
         },
