@@ -113,13 +113,13 @@ abstract class AppLocalizations {
   /// No description provided for @clearlist.
   ///
   /// In en, this message translates to:
-  /// **'Clear list'**
+  /// **'Clear'**
   String get clearlist;
 
   /// No description provided for @sharewhatsapp.
   ///
   /// In en, this message translates to:
-  /// **'Share Whatsapp'**
+  /// **'Share'**
   String get sharewhatsapp;
 }
 

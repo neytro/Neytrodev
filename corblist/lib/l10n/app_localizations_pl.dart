@@ -9,8 +9,8 @@ class AppLocalizationsPl extends AppLocalizations {
   AppLocalizationsPl([String locale = 'pl']) : super(locale);
 
   @override
-  String get clearlist => 'Wyczyść listę';
+  String get clearlist => 'Wyczyść';
 
   @override
-  String get sharewhatsapp => 'Wyślij do WhatsApp';
+  String get sharewhatsapp => 'Udostępnij';
 }

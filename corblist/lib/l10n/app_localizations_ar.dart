@@ -9,8 +9,8 @@ class AppLocalizationsAr extends AppLocalizations {
   AppLocalizationsAr([String locale = 'ar']) : super(locale);
 
   @override
-  String get clearlist => 'مسح القائمة';
+  String get clearlist => 'مسح';
 
   @override
-  String get sharewhatsapp => 'مشاركة عبر WhatsApp';
+  String get sharewhatsapp => 'شارك';
 }

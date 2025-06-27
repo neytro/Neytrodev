@@ -9,8 +9,8 @@ class AppLocalizationsFr extends AppLocalizations {
   AppLocalizationsFr([String locale = 'fr']) : super(locale);
 
   @override
-  String get clearlist => 'Effacer la liste';
+  String get clearlist => 'Nettoyer';
 
   @override
-  String get sharewhatsapp => 'Partager sur WhatsApp';
+  String get sharewhatsapp => 'Partager';
 }
