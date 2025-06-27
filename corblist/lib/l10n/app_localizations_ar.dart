@@ -12,5 +12,8 @@ class AppLocalizationsAr extends AppLocalizations {
   String get clearlist => 'مسح القائمة';
 
   @override
-  String get sharewhatsapp => 'مشاركة عبر WhatsApp';
+  String get sharewhatsapp => 'مشاركة عبر';
+
+  @override
+  String get deletitem => 'تم الحذف';
 }

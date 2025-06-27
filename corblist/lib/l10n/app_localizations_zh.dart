@@ -12,5 +12,8 @@ class AppLocalizationsZh extends AppLocalizations {
   String get clearlist => '清空列表';
 
   @override
-  String get sharewhatsapp => '分享到 WhatsApp';
+  String get sharewhatsapp => '分享到';
+
+  @override
+  String get deletitem => 'has been deleted';
 }

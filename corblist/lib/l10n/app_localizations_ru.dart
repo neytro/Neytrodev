@@ -9,8 +9,11 @@ class AppLocalizationsRu extends AppLocalizations {
   AppLocalizationsRu([String locale = 'ru']) : super(locale);
 
   @override
-  String get clearlist => 'Очистить список';
+  String get clearlist => 'Очистить';
 
   @override
-  String get sharewhatsapp => 'Отправить в WhatsApp';
+  String get sharewhatsapp => 'Отправить';
+
+  @override
+  String get deletitem => 'has been deleted';
 }

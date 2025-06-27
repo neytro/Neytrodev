@@ -9,8 +9,11 @@ class AppLocalizationsDe extends AppLocalizations {
   AppLocalizationsDe([String locale = 'de']) : super(locale);
 
   @override
-  String get clearlist => 'Liste leeren';
+  String get clearlist => 'Leeren';
 
   @override
-  String get sharewhatsapp => 'WhatsApp teilen';
+  String get sharewhatsapp => 'Teilen';
+
+  @override
+  String get deletitem => 'wurde gelöscht';
 }

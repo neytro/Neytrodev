@@ -20,7 +20,6 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Localizations Sample App',
       localizationsDelegates: [
         AppLocalizations.delegate, // Add this line
         GlobalMaterialLocalizations.delegate,
@@ -136,9 +135,10 @@ class _MyHomePageState extends State<MyHomePage> {
               PopupMenuItem(
                 value: 'clearlist',
                 child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  mainAxisAlignment: MainAxisAlignment.start,
                   children: [
                     Icon(Icons.delete_sweep_rounded),
+                    SizedBox(width: 10),
                     Text(AppLocalizations.of(context)!.clearlist),
                   ],
                 ),
@@ -146,9 +146,10 @@ class _MyHomePageState extends State<MyHomePage> {
               PopupMenuItem(
                 value: 'sharewhatsapp',
                 child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  mainAxisAlignment: MainAxisAlignment.start,
                   children: [
                     Icon(Icons.share),
+                    SizedBox(width: 10),
                     Text(AppLocalizations.of(context)!.sharewhatsapp),
                   ],
                 ),
@@ -180,53 +181,61 @@ class _MyHomePageState extends State<MyHomePage> {
 
         itemBuilder: (context, index) {
           final item = items[index];
+          return Dismissible(
 
-          return Container(
-            key: ValueKey(item.text),
-            decoration: item.checked
-                ? BoxDecoration(color: Colors.redAccent)
-                : BoxDecoration(
-                    border: Border(
-                      bottom: BorderSide(
-                        color: Theme.of(context).dividerColor,
-                        width: 0.5,
-                      ),
+            key: ValueKey(item),
+            direction: DismissDirection.endToStart,
+
+            onDismissed: (_) {
+              setState(() {
+                items.removeAt(index);
+              });
+              ScaffoldMessenger.of(context).showSnackBar(
+                SnackBar(
+                  content: Text(
+                    item.text + ' ' + AppLocalizations.of(context)!.deletitem,
+                  ),
+                ),
+              );
+            },
+            child: Container (
+              color: item.checked ? Colors.redAccent : Colors.white,
+
+
+              child: ListTile(
+
+                title: Row(
+
+                  children: [
+                    Checkbox(
+                      value: item.checked,
+                      onChanged: (value) {
+                        setState(() {
+                          item.checked = value ?? false;
+                        });
+                      },
                     ),
-                  ),
-
-            child: ListTile(
-              title: Row(
-                children: [
-                  Checkbox(
-                    value: item.checked,
-                    onChanged: (value) {
-                      setState(() {
-                        item.checked = value ?? false;
-                      });
-                    },
-                  ),
-                  Expanded(child: Text(item.text)),
-                  Column(
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      IconButton(
-                        icon: const Icon(Icons.camera_alt),
-                        onPressed: () {
-                          // Akcja info
-                        },
-                      ),
-                      if (index < items.length - 1)
-                        const Divider(
-                          height: 5,
-                          thickness: 5,
-                          color: Colors.lightBlue,
+                    Expanded(child: Text(item.text)),
+                    Column(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        IconButton(
+                          icon: const Icon(Icons.camera_alt),
+                          onPressed: () {},
                         ),
-                    ],
-                  ),
-                  Divider(height: 1, thickness: 1, color: Colors.lightBlue),
-                ],
+                        if (index < items.length - 1)
+                          const Divider(
+                            height: 5,
+                            thickness: 5,
+                            color: Colors.lightBlue,
+                          ),
+                      ],
+                    ),
+                    Divider(height: 1, thickness: 1, color: Colors.lightBlue),
+                  ],
+                ),
               ),
-            ),
+            )
           );
         },
       ),
