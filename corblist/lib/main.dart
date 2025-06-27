@@ -135,11 +135,23 @@ class _MyHomePageState extends State<MyHomePage> {
             itemBuilder: (BuildContext context) => [
               PopupMenuItem(
                 value: 'clearlist',
-                child: Text(AppLocalizations.of(context)!.clearlist),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Icon(Icons.delete_sweep_rounded),
+                    Text(AppLocalizations.of(context)!.clearlist),
+                  ],
+                ),
               ),
               PopupMenuItem(
                 value: 'sharewhatsapp',
-                child: Text(AppLocalizations.of(context)!.sharewhatsapp),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Icon(Icons.share),
+                    Text(AppLocalizations.of(context)!.sharewhatsapp),
+                  ],
+                ),
               ),
             ],
           ),
