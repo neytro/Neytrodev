@@ -102,6 +102,13 @@ class _MyHomePageState extends State<MyHomePage> {
       tileColor: isBeingDragged ? Colors.lightBlue : Colors.white,
     );
   }
+  _reorderList(int index){
+    if(items[index].checked == true){
+      items.insert(items.length, items[index]);
+      items.removeAt(index);
+
+    }
+  }
 
   void _incrementCounter() {
     setState(() {
@@ -206,6 +213,7 @@ class _MyHomePageState extends State<MyHomePage> {
                       onChanged: (value) {
                         setState(() {
                           item.checked = value ?? false;
+                          _reorderList(index);
                         });
                       },
                     ),
