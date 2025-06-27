@@ -2,10 +2,8 @@ import 'package:corblist/l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 
-
 void main() {
   runApp(const MyApp());
-
 }
 
 class MyApp extends StatelessWidget {
@@ -109,24 +107,32 @@ class _MyHomePageState extends State<MyHomePage> {
     return Scaffold(
       appBar: AppBar(
         actions: [
-          IconButton(
-            icon: Icon(Icons.search),
-            onPressed: () {
-            },
-          ),
-          IconButton(
-            icon: Icon(Icons.add),
-            onPressed: () {
-            },
-          ),
+          IconButton(icon: Icon(Icons.search), onPressed: () {}),
+          IconButton(icon: Icon(Icons.add), onPressed: () {}),
 
           PopupMenuButton<String>(
-            onSelected: (value) {
-            },
+            onSelected: (value) {},
             itemBuilder: (BuildContext context) => [
-              PopupMenuItem(value: 'clearlist', child: Text(AppLocalizations.of(context)!.clearlist)),
-              PopupMenuItem(value: 'sharewhatsapp', child: Text(AppLocalizations.of(context)!.sharewhatsapp)),
-
+              PopupMenuItem(
+                value: 'clearlist',
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Icon(Icons.delete_sweep_rounded),
+                    Text(AppLocalizations.of(context)!.clearlist),
+                  ],
+                ),
+              ),
+              PopupMenuItem(
+                value: 'sharewhatsapp',
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Icon(Icons.share),
+                    Text(AppLocalizations.of(context)!.sharewhatsapp),
+                  ],
+                ),
+              ),
             ],
           ),
         ],
@@ -155,10 +161,9 @@ class _MyHomePageState extends State<MyHomePage> {
           // TRY THIS: Invoke "debug painting" (choose the "Toggle Debug Paint"
           // action in the IDE, or press "p" in the console), to see the
           // wireframe for each widget.
-
         ),
       ),
-     // This trailing comma makes auto-formatting nicer for build methods.
+      // This trailing comma makes auto-formatting nicer for build methods.
     );
   }
 }
