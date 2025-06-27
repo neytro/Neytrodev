@@ -182,7 +182,6 @@ class _MyHomePageState extends State<MyHomePage> {
         itemBuilder: (context, index) {
           final item = items[index];
           return Dismissible(
-
             key: ValueKey(item),
             direction: DismissDirection.endToStart,
 
@@ -192,20 +191,15 @@ class _MyHomePageState extends State<MyHomePage> {
               });
               ScaffoldMessenger.of(context).showSnackBar(
                 SnackBar(
-                  content: Text(
-                    item.text + ' ' + AppLocalizations.of(context)!.deletitem,
-                  ),
+                  content: Text(AppLocalizations.of(context)!.deletitem),
                 ),
               );
             },
-            child: Container (
+            child: Container(
               color: item.checked ? Colors.redAccent : Colors.white,
 
-
               child: ListTile(
-
                 title: Row(
-
                   children: [
                     Checkbox(
                       value: item.checked,
@@ -235,7 +229,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   ],
                 ),
               ),
-            )
+            ),
           );
         },
       ),

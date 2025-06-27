@@ -125,7 +125,7 @@ abstract class AppLocalizations {
   /// No description provided for @deletitem.
   ///
   /// In en, this message translates to:
-  /// **'has been deleted'**
+  /// **'The article has been deleted'**
   String get deletitem;
 }
 

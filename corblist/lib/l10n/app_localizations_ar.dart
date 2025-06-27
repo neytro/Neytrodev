@@ -15,5 +15,5 @@ class AppLocalizationsAr extends AppLocalizations {
   String get sharewhatsapp => 'مشاركة عبر';
 
   @override
-  String get deletitem => 'تم الحذف';
+  String get deletitem => 'المقال تم حذفه';
 }

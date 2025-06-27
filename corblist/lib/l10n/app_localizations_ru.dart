@@ -15,5 +15,5 @@ class AppLocalizationsRu extends AppLocalizations {
   String get sharewhatsapp => 'Отправить';
 
   @override
-  String get deletitem => 'has been deleted';
+  String get deletitem => 'Статья была удалена';
 }

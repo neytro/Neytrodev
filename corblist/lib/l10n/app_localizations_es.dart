@@ -15,5 +15,5 @@ class AppLocalizationsEs extends AppLocalizations {
   String get sharewhatsapp => 'Compartir';
 
   @override
-  String get deletitem => 'ha sido eliminado';
+  String get deletitem => 'El artículo ha sido eliminado';
 }
