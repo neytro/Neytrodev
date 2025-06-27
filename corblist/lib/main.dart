@@ -102,11 +102,14 @@ class _MyHomePageState extends State<MyHomePage> {
       tileColor: isBeingDragged ? Colors.lightBlue : Colors.white,
     );
   }
-  _reorderList(int index){
-    if(items[index].checked == true){
+
+  void _reorderList(int index) {
+    if (items[index].checked == true) {
       items.insert(items.length, items[index]);
       items.removeAt(index);
-
+    } else {
+      items.insert(0, items[index]);
+      items.removeAt(index + 1);
     }
   }
 
@@ -213,8 +216,8 @@ class _MyHomePageState extends State<MyHomePage> {
                       onChanged: (value) {
                         setState(() {
                           item.checked = value ?? false;
-                          _reorderList(index);
                         });
+                        _reorderList(index);
                       },
                     ),
                     Expanded(child: Text(item.text)),
