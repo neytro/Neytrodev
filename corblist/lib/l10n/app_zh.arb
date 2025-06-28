@@ -1,5 +1,8 @@
 {
   "clearlist": "清空列表",
   "sharewhatsapp": "分享到",
-  "deletitem": "文章已被删除"
+  "deletitem": "文章已被删除",
+  "findshop": "找商店",
+  "addnameofstore": "输入商店名称",
+  "cancel": "取消"
 }

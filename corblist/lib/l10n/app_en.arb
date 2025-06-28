@@ -1,5 +1,8 @@
 {
   "clearlist": "Clear",
   "sharewhatsapp": "Share",
-  "deletitem": "The article has been deleted"
+  "deletitem": "The article has been deleted",
+  "findshop": "Find a store",
+  "addnameofstore": "Enter the store name",
+  "cancel": "Cancel"
 }

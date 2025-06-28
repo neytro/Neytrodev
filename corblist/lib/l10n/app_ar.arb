@@ -1,5 +1,8 @@
 {
   "clearlist": "مسح القائمة",
   "sharewhatsapp": "مشاركة عبر",
-  "deletitem": "المقال تم حذفه"
+  "deletitem": "المقال تم حذفه",
+  "findshop": "ابحث عن متجر",
+  "addnameofstore": "أدخل اسم المتجر",
+  "cancel": "إلغاء"
 }

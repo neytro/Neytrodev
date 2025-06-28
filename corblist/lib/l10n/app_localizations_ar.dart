@@ -16,4 +16,13 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get deletitem => 'المقال تم حذفه';
+
+  @override
+  String get findshop => 'ابحث عن متجر';
+
+  @override
+  String get addnameofstore => 'أدخل اسم المتجر';
+
+  @override
+  String get cancel => 'إلغاء';
 }

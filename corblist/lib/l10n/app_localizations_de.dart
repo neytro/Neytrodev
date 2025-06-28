@@ -16,4 +16,13 @@ class AppLocalizationsDe extends AppLocalizations {
 
   @override
   String get deletitem => 'Der Artikel wurde gelöscht';
+
+  @override
+  String get findshop => 'Geschäft finden';
+
+  @override
+  String get addnameofstore => 'Gib den Namen des Geschäfts ein';
+
+  @override
+  String get cancel => 'Abbrechen';
 }

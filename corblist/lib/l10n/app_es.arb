@@ -1,5 +1,8 @@
 {
   "clearlist": "Limpiar",
   "sharewhatsapp": "Compartir",
-  "deletitem": "El artículo ha sido eliminado"
+  "deletitem": "El artículo ha sido eliminado",
+  "findshop": "Encuentra una tienda",
+  "addnameofstore": "Introduce el nombre de la tienda",
+  "cancel": "Cancelar"
 }

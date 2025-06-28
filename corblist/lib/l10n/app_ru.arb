@@ -1,6 +1,9 @@
 {
   "clearlist": "Очистить",
   "sharewhatsapp": "Отправить",
-  "deletitem": "Статья была удалена"
+  "deletitem": "Статья была удалена",
+  "findshop": "Найди магазин",
+  "addnameofstore": "Введите название магазина",
+  "cancel": "Отменить"
 
 }

@@ -127,6 +127,24 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'The article has been deleted'**
   String get deletitem;
+
+  /// No description provided for @findshop.
+  ///
+  /// In en, this message translates to:
+  /// **'Find a store'**
+  String get findshop;
+
+  /// No description provided for @addnameofstore.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter the store name'**
+  String get addnameofstore;
+
+  /// No description provided for @cancel.
+  ///
+  /// In en, this message translates to:
+  /// **'Cancel'**
+  String get cancel;
 }
 
 class _AppLocalizationsDelegate

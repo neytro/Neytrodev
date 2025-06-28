@@ -113,15 +113,36 @@ class _MyHomePageState extends State<MyHomePage> {
     }
   }
 
-  void _incrementCounter() {
-    setState(() {
-      // This call to setState tells the Flutter framework that something has
-      // changed in this State, which causes it to rerun the build method below
-      // so that the display can reflect the updated values. If we changed
-      // _counter without calling setState(), then the build method would not be
-      // called again, and so nothing would appear to happen.
-      _counter++;
-    });
+  void _showInputDialogFindStore(BuildContext context) {
+    final TextEditingController _textController = TextEditingController();
+
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          content: TextField(
+            controller: _textController,
+            decoration: InputDecoration(hintText: AppLocalizations.of(context)!.addnameofstore),
+          ),
+          actions: <Widget>[
+            TextButton(
+              child: Text('Anuluj'),
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+            ),
+            ElevatedButton(
+              child: Text('OK'),
+              onPressed: () {
+                String wpisanyTekst = _textController.text;
+                print('Wpisano: $wpisanyTekst');
+                Navigator.of(context).pop();
+              },
+            ),
+          ],
+        );
+      },
+    );
   }
 
   @override
@@ -140,7 +161,11 @@ class _MyHomePageState extends State<MyHomePage> {
           IconButton(icon: Icon(Icons.add), onPressed: () {}),
 
           PopupMenuButton<String>(
-            onSelected: (value) {},
+            onSelected: (value) {
+              if (value == "findshop") {
+                _showInputDialogFindStore(context);
+              }
+            },
             itemBuilder: (BuildContext context) => [
               PopupMenuItem(
                 value: 'clearlist',
@@ -161,6 +186,17 @@ class _MyHomePageState extends State<MyHomePage> {
                     Icon(Icons.share),
                     SizedBox(width: 10),
                     Text(AppLocalizations.of(context)!.sharewhatsapp),
+                  ],
+                ),
+              ),
+              PopupMenuItem(
+                value: 'findshop',
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    Icon(Icons.map),
+                    SizedBox(width: 10),
+                    Text(AppLocalizations.of(context)!.findshop),
                   ],
                 ),
               ),

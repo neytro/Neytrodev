@@ -16,4 +16,13 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get deletitem => 'Статья была удалена';
+
+  @override
+  String get findshop => 'Найди магазин';
+
+  @override
+  String get addnameofstore => 'Введите название магазина';
+
+  @override
+  String get cancel => 'Отменить';
 }

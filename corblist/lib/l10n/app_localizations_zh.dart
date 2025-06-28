@@ -16,4 +16,13 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String get deletitem => '文章已被删除';
+
+  @override
+  String get findshop => '找商店';
+
+  @override
+  String get addnameofstore => '输入商店名称';
+
+  @override
+  String get cancel => '取消';
 }

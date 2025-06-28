@@ -1,5 +1,8 @@
 {
   "clearlist": "Leeren",
   "sharewhatsapp": "Teilen",
-  "deletitem": "Der Artikel wurde gelöscht"
+  "deletitem": "Der Artikel wurde gelöscht",
+  "findshop": "Geschäft finden",
+  "addnameofstore": "Gib den Namen des Geschäfts ein",
+  "cancel": "Abbrechen"
 }
