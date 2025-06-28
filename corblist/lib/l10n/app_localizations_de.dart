@@ -25,4 +25,7 @@ class AppLocalizationsDe extends AppLocalizations {
 
   @override
   String get cancel => 'Abbrechen';
+
+  @override
+  String get ok => 'Ok';
 }

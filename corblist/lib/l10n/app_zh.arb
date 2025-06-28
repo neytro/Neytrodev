@@ -4,5 +4,6 @@
   "deletitem": "文章已被删除",
   "findshop": "找商店",
   "addnameofstore": "输入商店名称",
-  "cancel": "取消"
+  "cancel": "取消",
+  "ok": "好的"
 }

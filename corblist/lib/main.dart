@@ -1,6 +1,7 @@
 import 'package:corblist/l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 void main() {
   runApp(const MyApp());
@@ -113,6 +114,17 @@ class _MyHomePageState extends State<MyHomePage> {
     }
   }
 
+  Future<void> _showGoogleMaps(String query) async {
+    final Uri url = Uri.parse(
+      "https://www.google.com/maps/search/?api=1&query=${Uri.encodeComponent(query)}",
+    );
+    if (await canLaunchUrl(url)) {
+      await launchUrl(url, mode: LaunchMode.externalApplication);
+    } else {
+      throw 'Nie można otworzyć Google Maps';
+    }
+  }
+
   void _showInputDialogFindStore(BuildContext context) {
     final TextEditingController _textController = TextEditingController();
 
@@ -122,21 +134,22 @@ class _MyHomePageState extends State<MyHomePage> {
         return AlertDialog(
           content: TextField(
             controller: _textController,
-            decoration: InputDecoration(hintText: AppLocalizations.of(context)!.addnameofstore),
+            decoration: InputDecoration(
+              hintText: AppLocalizations.of(context)!.addnameofstore,
+            ),
           ),
           actions: <Widget>[
             TextButton(
-              child: Text('Anuluj'),
+              child: Text(AppLocalizations.of(context)!.cancel),
               onPressed: () {
                 Navigator.of(context).pop();
               },
             ),
             ElevatedButton(
-              child: Text('OK'),
+              child: Text(AppLocalizations.of(context)!.ok),
               onPressed: () {
-                String wpisanyTekst = _textController.text;
-                print('Wpisano: $wpisanyTekst');
-                Navigator.of(context).pop();
+                String query = _textController.text;
+                _showGoogleMaps(query);
               },
             ),
           ],

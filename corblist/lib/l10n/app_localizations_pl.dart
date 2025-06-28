@@ -25,4 +25,7 @@ class AppLocalizationsPl extends AppLocalizations {
 
   @override
   String get cancel => 'Anuluj';
+
+  @override
+  String get ok => 'Ok';
 }

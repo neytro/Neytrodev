@@ -25,4 +25,7 @@ class AppLocalizationsFr extends AppLocalizations {
 
   @override
   String get cancel => 'Annuler';
+
+  @override
+  String get ok => 'حسناً';
 }
