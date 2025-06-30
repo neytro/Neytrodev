@@ -1,3 +1,5 @@
+import 'package:corblist/Repository/DatabaseHelper.dart';
+import 'package:corblist/Repository/Item.dart';
 import 'package:corblist/l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
@@ -7,12 +9,7 @@ void main() {
   runApp(const MyApp());
 }
 
-class Item {
-  bool checked;
-  String text;
 
-  Item({required this.checked, required this.text});
-}
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
