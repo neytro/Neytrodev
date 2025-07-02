@@ -1,63 +1,40 @@
+import 'package:corblist/Repository/Item.dart';
 import 'package:sqflite/sqflite.dart';
 import 'package:path/path.dart';
 
 class DatabaseHelper {
-  static final DatabaseHelper _instance = DatabaseHelper._internal();
-  factory DatabaseHelper() => _instance;
-  DatabaseHelper._internal();
+  static final DatabaseHelper instance = DatabaseHelper._init();
+  static Database? _database;
 
-  Database? _db;
+  DatabaseHelper._init();
 
   Future<Database> get database async {
-    if (_db != null) return _db!;
-    _db = await _initDb();
-    return _db!;
+    if (_database != null) return _database!;
+    _database = await _initDB('my_database.db');
+    return _database!;
   }
 
-  Future<Database> _initDb() async {
+  Future<Database> _initDB(String filePath) async {
     final dbPath = await getDatabasesPath();
-    final path = join(dbPath, 'my_database.db');
+    final path = join(dbPath, filePath);
 
     return await openDatabase(
       path,
       version: 1,
-      onCreate: (db, version) async {
-        await db.execute('''
-          CREATE TABLE items (
-            id INTEGER PRIMARY KEY AUTOINCREMENT,
-            name TEXT
-          )
-        ''');
-      },
+      onCreate: _createDB,
     );
   }
-  Future<void> addItem(String name) async {
-    final db = await DatabaseHelper().database;
-    await db.insert(
-      'items',
-      {'name': name},
-      conflictAlgorithm: ConflictAlgorithm.replace,
-    );
+
+  Future _createDB(Database db, int version) async {
+    await db.execute('''
+      CREATE TABLE notes (
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        text TEXT NOT NULL
+      )
+    ''');
   }
-  Future<void> updateItem(int id, String newName) async {
-    final db = await DatabaseHelper().database;
-    await db.update(
-      'items',
-      {'name': newName},
-      where: 'id = ?',
-      whereArgs: [id],
-    );
-  }
-  Future<void> deleteItem(int id) async {
-    final db = await DatabaseHelper().database;
-    await db.delete(
-      'items',
-      where: 'id = ?',
-      whereArgs: [id],
-    );
-  }
-  Future<List<Map<String, dynamic>>> getItems() async {
-    final db = await DatabaseHelper().database;
-    return await db.query('items');
+
+  Future<void> addItem(Item item) async {
+    await _database!.insert('items', item.toMap());
   }
 }

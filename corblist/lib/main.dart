@@ -87,12 +87,7 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
-  List<Item> items = List.generate(
-    10,
-    (index) => Item(checked: false, text: 'Item $index'),
-  );
-
+  List<Item> items = [];
   Widget _buildItem({required int index, required bool isBeingDragged}) {
     return ListTile(
       key: ValueKey(items[index]),
@@ -168,7 +163,15 @@ class _MyHomePageState extends State<MyHomePage> {
       appBar: AppBar(
         actions: [
           IconButton(icon: Icon(Icons.search), onPressed: () {}),
-          IconButton(icon: Icon(Icons.add), onPressed: () {}),
+          IconButton(icon: Icon(Icons.add), onPressed: () {
+            Item item = Item(checked: false, text: 'bleee');
+            items.insert(0, item);
+            DatabaseHelper.instance.addItem(item);
+            setState(() {
+
+            });
+            
+          }),
 
           PopupMenuButton<String>(
             onSelected: (value) {
