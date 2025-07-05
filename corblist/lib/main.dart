@@ -1,3 +1,4 @@
+import 'package:corblist/Dialogs/DialogStandard.dart';
 import 'package:corblist/Repository/DatabaseHelper.dart';
 import 'package:corblist/Repository/Item.dart';
 import 'package:corblist/l10n/app_localizations.dart';
@@ -177,6 +178,10 @@ class _MyHomePageState extends State<MyHomePage> {
             onSelected: (value) {
               if (value == "findshop") {
                 _showInputDialogFindStore(context);
+                Dialogs.showInputDialogStandard(context,
+                    AppLocalizations.of(context)!.addnameofstore,
+                    AppLocalizations.of(context)!.ok,
+                    AppLocalizations.of(context)!.cancel, _showGoogleMaps);
               }
             },
             itemBuilder: (BuildContext context) => [
