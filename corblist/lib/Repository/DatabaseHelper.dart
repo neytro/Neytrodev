@@ -1,40 +1,35 @@
+import 'dart:async';
+
 import 'package:corblist/Repository/Item.dart';
-import 'package:sqflite/sqflite.dart';
+import 'package:flutter/widgets.dart';
 import 'package:path/path.dart';
+import 'package:sqflite/sqflite.dart';
 
 class DatabaseHelper {
-  static final DatabaseHelper instance = DatabaseHelper._init();
-  static Database? _database;
+  late Future<Database>  _database;
+  DatabaseHelper();
+  Future<void> initDatabase() async {
+    _database = openDatabase(
 
-  DatabaseHelper._init();
-
-  Future<Database> get database async {
-    if (_database != null) return _database!;
-    _database = await _initDB('my_database.db');
-    return _database!;
-  }
-
-  Future<Database> _initDB(String filePath) async {
-    final dbPath = await getDatabasesPath();
-    final path = join(dbPath, filePath);
-
-    return await openDatabase(
-      path,
+      join(await getDatabasesPath(), 'shoppinglist.db'),
+      onCreate: (db, version) {
+        return db.execute(
+          'CREATE TABLE List(id INTEGER PRIMARY KEY, text TEXT, checked BOOLEAN)',
+        );
+      },
       version: 1,
-      onCreate: _createDB,
     );
   }
 
-  Future _createDB(Database db, int version) async {
-    await db.execute('''
-      CREATE TABLE notes (
-        id INTEGER PRIMARY KEY AUTOINCREMENT,
-        text TEXT NOT NULL
-      )
-    ''');
-  }
 
-  Future<void> addItem(Item item) async {
-    await _database!.insert('items', item.toMap());
+  Future<void> insertItem(Item item) async {
+    final db = await _database;
+
+    await db.insert(
+      'list',
+      item.toMap(),
+      conflictAlgorithm: ConflictAlgorithm.replace,
+    );
   }
 }
+

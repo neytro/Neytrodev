@@ -6,8 +6,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-void main() {
+void main() async{
   runApp(const MyApp());
+  WidgetsFlutterBinding.ensureInitialized();
 }
 
 
@@ -89,6 +90,8 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   List<Item> items = [];
+  DatabaseHelper databaseHelper = DatabaseHelper();
+
   Widget _buildItem({required int index, required bool isBeingDragged}) {
     return ListTile(
       key: ValueKey(items[index]),
@@ -118,38 +121,7 @@ class _MyHomePageState extends State<MyHomePage> {
     }
   }
 
-  void _showInputDialogFindStore(BuildContext context) {
-    final TextEditingController _textController = TextEditingController();
 
-    showDialog(
-      context: context,
-      builder: (BuildContext context) {
-        return AlertDialog(
-          content: TextField(
-            controller: _textController,
-            decoration: InputDecoration(
-              hintText: AppLocalizations.of(context)!.addnameofstore,
-            ),
-          ),
-          actions: <Widget>[
-            TextButton(
-              child: Text(AppLocalizations.of(context)!.cancel),
-              onPressed: () {
-                Navigator.of(context).pop();
-              },
-            ),
-            ElevatedButton(
-              child: Text(AppLocalizations.of(context)!.ok),
-              onPressed: () {
-                String query = _textController.text;
-                _showGoogleMaps(query);
-              },
-            ),
-          ],
-        );
-      },
-    );
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -159,25 +131,25 @@ class _MyHomePageState extends State<MyHomePage> {
     // The Flutter framework has been optimized to make rerunning build methods
     // fast, so that you can just rebuild anything that needs updating rather
     // than having to individually change instances of widgets.
-
+    databaseHelper.initDatabase();
     return Scaffold(
       appBar: AppBar(
         actions: [
           IconButton(icon: Icon(Icons.search), onPressed: () {}),
-          IconButton(icon: Icon(Icons.add), onPressed: () {
+          IconButton(icon: Icon(Icons.add), onPressed: () async {
             Item item = Item(checked: false, text: 'bleee');
             items.insert(0, item);
-            DatabaseHelper.instance.addItem(item);
             setState(() {
-
             });
+            await databaseHelper.insertItem(item);
+
+
             
           }),
 
           PopupMenuButton<String>(
             onSelected: (value) {
               if (value == "findshop") {
-                _showInputDialogFindStore(context);
                 Dialogs.showInputDialogStandard(context,
                     AppLocalizations.of(context)!.addnameofstore,
                     AppLocalizations.of(context)!.ok,
