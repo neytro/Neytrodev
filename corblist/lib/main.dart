@@ -82,6 +82,7 @@ class MyHomePage extends StatefulWidget {
 
   final String title;
 
+
   @override
   State<MyHomePage> createState() => _MyHomePageState();
 }
@@ -146,7 +147,7 @@ class _MyHomePageState extends State<MyHomePage> {
           IconButton(
             icon: Icon(Icons.add),
             onPressed: () async {
-              Item item = Item(checked: false, text: 'bleee');
+              Item item = Item( checked: false, text: 'bleee');
               items.insert(0, item);
               setState(() {});
               await databaseHelper.insertItem(item);
@@ -233,6 +234,8 @@ class _MyHomePageState extends State<MyHomePage> {
             onDismissed: (_) {
               setState(() {
                 items.removeAt(index);
+                databaseHelper.deleteItem(item.id!);
+
               });
               ScaffoldMessenger.of(context).showSnackBar(
                 SnackBar(

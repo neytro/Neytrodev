@@ -4,7 +4,6 @@ import 'package:flutter/widgets.dart';
 import 'package:path/path.dart';
 import 'package:sqflite/sqflite.dart';
 
-
 class DatabaseHelper {
   late Future<Database> database;
 
@@ -33,10 +32,9 @@ class DatabaseHelper {
       conflictAlgorithm: ConflictAlgorithm.replace,
     );
   }
-  Future<List<Item>> getItems() async {
-    print("2222222222222222222");
-    final db = await database;
 
+  Future<List<Item>> getItems() async {
+    final db = await database;
 
     final List<Map<String, Object?>> itemMaps = await db.query('list');
 
@@ -44,5 +42,18 @@ class DatabaseHelper {
       return Item.fromMap(itemMaps[i]);
     });
   }
-}
 
+  Future<void> deleteItem(int id) async {
+    // Get a reference to the database.
+    final db = await database;
+
+    // Remove the Dog from the database.
+    await db.delete(
+      'list',
+      // Use a `where` clause to delete a specific dog.
+      where: 'id = ?',
+      // Pass the Dog's id as a whereArg to prevent SQL injection.
+      whereArgs: [id],
+    );
+  }
+}
