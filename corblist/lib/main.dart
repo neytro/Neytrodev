@@ -233,13 +233,7 @@ class _MyHomePageState extends State<MyHomePage> {
             onDismissed: (_) {
               final removedItem = items[index];
 
-              setState(() {
-                items.removeAt(index);
-              });
-
-              if (removedItem.id != null) {
-                databaseHelper.deleteItem(removedItem.id!);
-              }
+             
 
               ScaffoldMessenger.of(context).showSnackBar(
                 SnackBar(
