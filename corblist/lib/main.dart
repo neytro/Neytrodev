@@ -240,6 +240,7 @@ class _MyHomePageState extends State<MyHomePage> {
               if (removedItem.id != null) {
                 databaseHelper.deleteItem(removedItem.id!);
               }
+
               ScaffoldMessenger.of(context).showSnackBar(
                 SnackBar(
                   content: Text(AppLocalizations.of(context)!.deletitem),
