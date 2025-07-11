@@ -130,6 +130,12 @@ class _MyHomePageState extends State<MyHomePage> {
     }
   }
 
+  Future<void> insertItemToList(Item item) async {
+    items.insert(0, item);
+    setState(() {});
+    await databaseHelper.insertItem(item);
+  }
+
   @override
   Widget build(BuildContext context) {
     // This method is rerun every time setState is called, for instance as done
@@ -146,10 +152,13 @@ class _MyHomePageState extends State<MyHomePage> {
           IconButton(
             icon: Icon(Icons.add),
             onPressed: () async {
-              Item item = Item(checked: false, text: 'bleee');
-              items.insert(0, item);
-              setState(() {});
-              await databaseHelper.insertItem(item);
+              Dialogs.showInputDialogImageAndName(
+                context,
+                AppLocalizations.of(context)!.addnameofstore,
+                AppLocalizations.of(context)!.ok,
+                AppLocalizations.of(context)!.cancel,
+                insertItemToList,
+              );
             },
           ),
 
