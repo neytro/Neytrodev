@@ -151,6 +151,30 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Ok'**
   String get ok;
+
+  /// No description provided for @additem.
+  ///
+  /// In en, this message translates to:
+  /// **'Add item'**
+  String get additem;
+
+  /// No description provided for @enterItemName.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter the item'**
+  String get enterItemName;
+
+  /// No description provided for @makeAphoto.
+  ///
+  /// In en, this message translates to:
+  /// **'Make a photo'**
+  String get makeAphoto;
+
+  /// No description provided for @seletAphoto.
+  ///
+  /// In en, this message translates to:
+  /// **'Select a photo'**
+  String get seletAphoto;
 }
 
 class _AppLocalizationsDelegate

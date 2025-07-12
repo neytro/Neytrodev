@@ -5,5 +5,9 @@
   "findshop": "Find a store",
   "addnameofstore": "Enter the store name",
   "cancel": "Cancel",
-  "ok": "Ok"
+  "ok": "Ok",
+  "additem": "Add item",
+  "enterItemName": "Enter the item",
+  "makeAphoto": "Make a photo",
+  "seletAphoto": "Select a photo"
 }

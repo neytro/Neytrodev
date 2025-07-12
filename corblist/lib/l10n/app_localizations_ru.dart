@@ -28,4 +28,16 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get ok => 'Хорошо';
+
+  @override
+  String get additem => 'Add item';
+
+  @override
+  String get enterItemName => 'Enter the item';
+
+  @override
+  String get makeAphoto => 'Make a photo';
+
+  @override
+  String get seletAphoto => 'Select a photo';
 }

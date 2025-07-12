@@ -154,7 +154,8 @@ class _MyHomePageState extends State<MyHomePage> {
             onPressed: () async {
               Dialogs.showInputDialogImageAndName(
                 context,
-                AppLocalizations.of(context)!.addnameofstore,
+                AppLocalizations.of(context)!.additem,
+                AppLocalizations.of(context)!.enterItemName,
                 AppLocalizations.of(context)!.ok,
                 AppLocalizations.of(context)!.cancel,
                 insertItemToList,

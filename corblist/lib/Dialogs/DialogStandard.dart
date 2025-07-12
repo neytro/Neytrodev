@@ -1,4 +1,5 @@
 import 'package:corblist/Repository/Item.dart';
+import 'package:corblist/l10n/app_localizations.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -42,6 +43,7 @@ class Dialogs {
 
   static void showInputDialogImageAndName(
     BuildContext context,
+    String titleAddItem,
     String hintText,
     String ok,
     String cancel,
@@ -53,8 +55,8 @@ class Dialogs {
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
+          title: Text(titleAddItem),
           content: Row(
-
             children: [
               Expanded(
                 child: TextField(
@@ -63,9 +65,42 @@ class Dialogs {
                 ),
               ),
               SizedBox(width: 10),
-              IconButton(icon: Icon(Icons.camera_alt),padding: EdgeInsets.zero, onPressed: () async {}),
-              SizedBox(width: 5),
-              IconButton(icon: Icon(Icons.photo_library),padding: EdgeInsets.zero, onPressed: () async {},),
+              PopupMenuButton<String>(
+                onSelected: (value) {
+                  if (value == "makeAphoto") {
+
+                  }
+                  else if (value == "selectAphoto"){
+
+                  }
+                },
+                itemBuilder: (BuildContext context) => [
+                  PopupMenuItem(
+                    value: 'makeAphoto',
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: [
+                        Icon(Icons.camera_alt),
+                        SizedBox(width: 10),
+                        Text(AppLocalizations.of(context)!.makeAphoto),
+                      ],
+                    ),
+                  ),
+                  PopupMenuItem(
+                    value: 'selectAphoto',
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: [
+                        Icon(Icons.photo),
+                        SizedBox(width: 10),
+                        Text(AppLocalizations.of(context)!.seletAphoto),
+                      ],
+                    ),
+                  ),
+
+                ],
+              ),
+
             ],
 
             //TextField(
