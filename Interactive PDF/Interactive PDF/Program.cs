@@ -61,29 +61,30 @@ class Example
 
             RadioFormFieldBuilder proofbuilder = new RadioFormFieldBuilder(pdf, "proofbuilder");
             PdfButtonFormField proofRadioGroup = proofbuilder.CreateRadioGroup();
-            Rectangle rectJa = new Rectangle(40, 788, 20, 18);
-            Rectangle rectNein = new Rectangle(60, 788, 20, 18);
-            Rectangle rectPart = new Rectangle(80, 788, 20, 18);
+            Rectangle rectJa = new Rectangle(40, 788, 15, 15);
+            Rectangle rectNein = new Rectangle(60, 788, 15, 15);
+            Rectangle rectPart = new Rectangle(80, 788, 15, 15);
             PdfFormAnnotation fieldJa = proofbuilder
                     .CreateRadioButton("rectJa", rectJa)
                     .SetBorderWidth(1)
-                    .SetBorderColor(ColorConstants.BLACK);
+                    .SetBorderColor(ColorConstants.BLACK)
+                    .SetBackgroundColor(ColorConstants.WHITE);
             PdfFormAnnotation fieldNein = proofbuilder
                     .CreateRadioButton("rectNein", rectNein)
                     .SetBorderWidth(1)
-                    .SetBorderColor(ColorConstants.BLACK);
+                    .SetBorderColor(ColorConstants.BLACK)
+                    .SetBackgroundColor(ColorConstants.WHITE);
             PdfFormAnnotation fieldPart = proofbuilder
                    .CreateRadioButton("rectPart", rectPart)
                    .SetBorderWidth(1)
-                   .SetBorderColor(ColorConstants.BLACK);
+                   .SetBorderColor(ColorConstants.BLACK)
+                   .SetBackgroundColor(ColorConstants.WHITE);
+            
             proofRadioGroup.AddKid(fieldJa);
             proofRadioGroup.AddKid(fieldNein);
             proofRadioGroup.AddKid(fieldPart);
 
-
-
             PdfAcroForm form = PdfFormCreator.GetAcroForm(pdf, true);
-            
 
             document.Add(paragraph);
             document.Add(name);
