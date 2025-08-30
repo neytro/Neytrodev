@@ -1,0 +1,55 @@
+E:\Programowanie\neytrodev\Interactive PDF\Interactive PDF\bin\Debug\net6.0\Interactive PDF.exe
+E:\Programowanie\neytrodev\Interactive PDF\Interactive PDF\bin\Debug\net6.0\Interactive PDF.deps.json
+E:\Programowanie\neytrodev\Interactive PDF\Interactive PDF\bin\Debug\net6.0\Interactive PDF.runtimeconfig.json
+E:\Programowanie\neytrodev\Interactive PDF\Interactive PDF\bin\Debug\net6.0\Interactive PDF.dll
+E:\Programowanie\neytrodev\Interactive PDF\Interactive PDF\bin\Debug\net6.0\Interactive PDF.pdb
+E:\Programowanie\neytrodev\Interactive PDF\Interactive PDF\obj\Debug\net6.0\Interactive PDF.csproj.AssemblyReference.cache
+E:\Programowanie\neytrodev\Interactive PDF\Interactive PDF\obj\Debug\net6.0\Interactive PDF.GeneratedMSBuildEditorConfig.editorconfig
+E:\Programowanie\neytrodev\Interactive PDF\Interactive PDF\obj\Debug\net6.0\Interactive PDF.AssemblyInfoInputs.cache
+E:\Programowanie\neytrodev\Interactive PDF\Interactive PDF\obj\Debug\net6.0\Interactive PDF.AssemblyInfo.cs
+E:\Programowanie\neytrodev\Interactive PDF\Interactive PDF\obj\Debug\net6.0\Interactive PDF.csproj.CoreCompileInputs.cache
+E:\Programowanie\neytrodev\Interactive PDF\Interactive PDF\obj\Debug\net6.0\Interactive PDF.dll
+E:\Programowanie\neytrodev\Interactive PDF\Interactive PDF\obj\Debug\net6.0\refint\Interactive PDF.dll
+E:\Programowanie\neytrodev\Interactive PDF\Interactive PDF\obj\Debug\net6.0\Interactive PDF.pdb
+E:\Programowanie\neytrodev\Interactive PDF\Interactive PDF\obj\Debug\net6.0\Interactive PDF.genruntimeconfig.cache
+E:\Programowanie\neytrodev\Interactive PDF\Interactive PDF\obj\Debug\net6.0\ref\Interactive PDF.dll
+E:\Programowanie\neytrodev\Interactive PDF\Interactive PDF\bin\Debug\net6.0\itext.barcodes.dll
+E:\Programowanie\neytrodev\Interactive PDF\Interactive PDF\bin\Debug\net6.0\itext.bouncy-castle-connector.dll
+E:\Programowanie\neytrodev\Interactive PDF\Interactive PDF\bin\Debug\net6.0\itext.forms.dll
+E:\Programowanie\neytrodev\Interactive PDF\Interactive PDF\bin\Debug\net6.0\itext.io.dll
+E:\Programowanie\neytrodev\Interactive PDF\Interactive PDF\bin\Debug\net6.0\itext.kernel.dll
+E:\Programowanie\neytrodev\Interactive PDF\Interactive PDF\bin\Debug\net6.0\itext.layout.dll
+E:\Programowanie\neytrodev\Interactive PDF\Interactive PDF\bin\Debug\net6.0\itext.pdfa.dll
+E:\Programowanie\neytrodev\Interactive PDF\Interactive PDF\bin\Debug\net6.0\itext.pdfua.dll
+E:\Programowanie\neytrodev\Interactive PDF\Interactive PDF\bin\Debug\net6.0\itext.sign.dll
+E:\Programowanie\neytrodev\Interactive PDF\Interactive PDF\bin\Debug\net6.0\itext.styledxmlparser.dll
+E:\Programowanie\neytrodev\Interactive PDF\Interactive PDF\bin\Debug\net6.0\itext.svg.dll
+E:\Programowanie\neytrodev\Interactive PDF\Interactive PDF\bin\Debug\net6.0\itext.commons.dll
+E:\Programowanie\neytrodev\Interactive PDF\Interactive PDF\bin\Debug\net6.0\Microsoft.Bcl.AsyncInterfaces.dll
+E:\Programowanie\neytrodev\Interactive PDF\Interactive PDF\bin\Debug\net6.0\Microsoft.DotNet.PlatformAbstractions.dll
+E:\Programowanie\neytrodev\Interactive PDF\Interactive PDF\bin\Debug\net6.0\Microsoft.Extensions.DependencyInjection.dll
+E:\Programowanie\neytrodev\Interactive PDF\Interactive PDF\bin\Debug\net6.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+E:\Programowanie\neytrodev\Interactive PDF\Interactive PDF\bin\Debug\net6.0\Microsoft.Extensions.DependencyModel.dll
+E:\Programowanie\neytrodev\Interactive PDF\Interactive PDF\bin\Debug\net6.0\Microsoft.Extensions.Logging.dll
+E:\Programowanie\neytrodev\Interactive PDF\Interactive PDF\bin\Debug\net6.0\Microsoft.Extensions.Logging.Abstractions.dll
+E:\Programowanie\neytrodev\Interactive PDF\Interactive PDF\bin\Debug\net6.0\Microsoft.Extensions.Options.dll
+E:\Programowanie\neytrodev\Interactive PDF\Interactive PDF\bin\Debug\net6.0\Microsoft.Extensions.Primitives.dll
+E:\Programowanie\neytrodev\Interactive PDF\Interactive PDF\bin\Debug\net6.0\Newtonsoft.Json.dll
+E:\Programowanie\neytrodev\Interactive PDF\Interactive PDF\bin\Debug\net6.0\System.IO.Pipelines.dll
+E:\Programowanie\neytrodev\Interactive PDF\Interactive PDF\bin\Debug\net6.0\System.Text.Encodings.Web.dll
+E:\Programowanie\neytrodev\Interactive PDF\Interactive PDF\bin\Debug\net6.0\System.Text.Json.dll
+E:\Programowanie\neytrodev\Interactive PDF\Interactive PDF\obj\Debug\net6.0\Interactive PDF.csproj.CopyComplete
+E:\Programowanie\neytrodev\Interactive PDF\Interactive PDF\bin\Debug\net6.0\BouncyCastle.Cryptography.dll
+E:\Programowanie\neytrodev\Interactive PDF\Interactive PDF\bin\Debug\net6.0\itext.bouncy-castle-adapter.dll
+E:\Programowanie\neytrodev\Interactive PDF\Interactive PDF\bin\Debug\net6.0\Antlr3.Runtime.dll
+E:\Programowanie\neytrodev\Interactive PDF\Interactive PDF\bin\Debug\net6.0\Antlr4.Runtime.dll
+E:\Programowanie\neytrodev\Interactive PDF\Interactive PDF\bin\Debug\net6.0\itext.licensing.base.dll
+E:\Programowanie\neytrodev\Interactive PDF\Interactive PDF\bin\Debug\net6.0\itext.pdfxfa.dll
+E:\Programowanie\neytrodev\Interactive PDF\Interactive PDF\bin\Debug\net6.0\Aspose.Words.dll
+E:\Programowanie\neytrodev\Interactive PDF\Interactive PDF\bin\Debug\net6.0\SkiaSharp.dll
+E:\Programowanie\neytrodev\Interactive PDF\Interactive PDF\bin\Debug\net6.0\System.Text.Encoding.CodePages.dll
+E:\Programowanie\neytrodev\Interactive PDF\Interactive PDF\bin\Debug\net6.0\runtimes\osx\native\libSkiaSharp.dylib
+E:\Programowanie\neytrodev\Interactive PDF\Interactive PDF\bin\Debug\net6.0\runtimes\win-arm64\native\libSkiaSharp.dll
+E:\Programowanie\neytrodev\Interactive PDF\Interactive PDF\bin\Debug\net6.0\runtimes\win-x64\native\libSkiaSharp.dll
+E:\Programowanie\neytrodev\Interactive PDF\Interactive PDF\bin\Debug\net6.0\runtimes\win-x86\native\libSkiaSharp.dll
+E:\Programowanie\neytrodev\Interactive PDF\Interactive PDF\bin\Debug\net6.0\runtimes\win\lib\net6.0\System.Text.Encoding.CodePages.dll
