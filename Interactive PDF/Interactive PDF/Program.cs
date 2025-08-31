@@ -59,11 +59,20 @@ class Example
             Paragraph proofData = new Paragraph("Stimmen die angegebenen Daten aus der Selbstauskunft mit der Wirklichkeit überein?");
             proofData.SetFontSize(10);
 
+            Paragraph jaTextProofData = new Paragraph("Ja");
+            jaTextProofData.SetFontSize(10);
+            jaTextProofData.SetFixedPosition(1,57, 555, 20);
+
+            Paragraph neinTextProofData = new Paragraph("Nein");
+            neinTextProofData.SetFontSize(10);
+            neinTextProofData.SetFixedPosition(1, 120, 555, 40);
+            
+
             RadioFormFieldBuilder proofbuilder = new RadioFormFieldBuilder(pdf, "proofbuilder");
             PdfButtonFormField proofRadioGroup = proofbuilder.CreateRadioGroup();
-            Rectangle rectJa = new Rectangle(40, 788, 15, 15);
-            Rectangle rectNein = new Rectangle(60, 788, 15, 15);
-            Rectangle rectPart = new Rectangle(80, 788, 15, 15);
+            Rectangle rectJa = new Rectangle(37, 555, 15, 15);
+            Rectangle rectNein = new Rectangle(100, 555, 15, 15);
+            Rectangle rectPart = new Rectangle(163, 555, 15, 15);
             PdfFormAnnotation fieldJa = proofbuilder
                     .CreateRadioButton("rectJa", rectJa)
                     .SetBorderWidth(1)
@@ -95,6 +104,8 @@ class Example
             document.Add(home);
             document.Add(userId);
             document.Add(proofData);
+            document.Add(jaTextProofData);
+            document.Add(neinTextProofData);
 
             form.AddField(nameField);
             form.AddField(dateField);
@@ -103,6 +114,7 @@ class Example
             form.AddField(homeField);
             form.AddField(userIdField);
             form.AddField(proofRadioGroup);
+
             document.Close();
 
         }
