@@ -66,7 +66,11 @@ class Example
             Paragraph neinTextProofData = new Paragraph("Nein");
             neinTextProofData.SetFontSize(10);
             neinTextProofData.SetFixedPosition(1, 120, 555, 40);
-            
+
+            Paragraph descriptionTextProofData = new Paragraph("Teilweise, bitte ausführen");
+            descriptionTextProofData.SetFontSize(10);
+            descriptionTextProofData.SetFixedPosition(1, 183, 555, 200);
+
 
             RadioFormFieldBuilder proofbuilder = new RadioFormFieldBuilder(pdf, "proofbuilder");
             PdfButtonFormField proofRadioGroup = proofbuilder.CreateRadioGroup();
@@ -106,6 +110,7 @@ class Example
             document.Add(proofData);
             document.Add(jaTextProofData);
             document.Add(neinTextProofData);
+            document.Add(descriptionTextProofData);
 
             form.AddField(nameField);
             form.AddField(dateField);
