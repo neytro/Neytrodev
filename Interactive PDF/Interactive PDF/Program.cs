@@ -71,7 +71,6 @@ class Example
             descriptionTextProofData.SetFontSize(10);
             descriptionTextProofData.SetFixedPosition(1, 183, 555, 200);
 
-
             RadioFormFieldBuilder proofbuilder = new RadioFormFieldBuilder(pdf, "proofbuilder");
             PdfButtonFormField proofRadioGroup = proofbuilder.CreateRadioGroup();
             Rectangle rectJa = new Rectangle(37, 555, 15, 15);
@@ -92,7 +91,6 @@ class Example
                    .SetBorderWidth(1)
                    .SetBorderColor(ColorConstants.BLACK)
                    .SetBackgroundColor(ColorConstants.WHITE);
-
             proofRadioGroup.AddKid(fieldJa);
             proofRadioGroup.AddKid(fieldNein);
             proofRadioGroup.AddKid(fieldPart);
@@ -109,21 +107,21 @@ class Example
 
             Paragraph jaTextPermisionData = new Paragraph("Ja");
             jaTextPermisionData.SetFontSize(10);
-            jaTextPermisionData.SetFixedPosition(1, 57, 480, 20);
+            jaTextPermisionData.SetFixedPosition(1, 57, 485, 20);
 
             Paragraph neinTextPermisionData = new Paragraph("Nein, wird nachgereicht");
             neinTextPermisionData.SetFontSize(10);
-            neinTextPermisionData.SetFixedPosition(1, 120, 480, 200);
+            neinTextPermisionData.SetFixedPosition(1, 120, 485, 200);
 
             Paragraph descriptionTextPermisionData = new Paragraph("Eigentum");
             descriptionTextPermisionData.SetFontSize(10);
-            descriptionTextPermisionData.SetFixedPosition(1, 270, 480, 200);
+            descriptionTextPermisionData.SetFixedPosition(1, 270, 485, 200);
 
             RadioFormFieldBuilder permisionBuilder = new RadioFormFieldBuilder(pdf, "permisionbuilder");
             PdfButtonFormField permisionRadioGroup = permisionBuilder.CreateRadioGroup();
-            Rectangle permisionrectJa = new Rectangle(37, 480, 15, 15);
-            Rectangle permisionrectNein = new Rectangle(100, 480, 15, 15);
-            Rectangle permisionrectPart = new Rectangle(250, 480, 15, 15);
+            Rectangle permisionrectJa = new Rectangle(37, 485, 15, 15);
+            Rectangle permisionrectNein = new Rectangle(100, 485, 15, 15);
+            Rectangle permisionrectPart = new Rectangle(250, 485, 15, 15);
             PdfFormAnnotation permisionfieldJa = permisionBuilder
                     .CreateRadioButton("permisionrectJa", permisionrectJa)
                     .SetBorderWidth(1)
@@ -143,6 +141,45 @@ class Example
             permisionRadioGroup.AddKid(permisionfieldJa);
             permisionRadioGroup.AddKid(permisionfieldNein);
             permisionRadioGroup.AddKid(permisionfieldPart);
+
+            Paragraph saveGarten = new Paragraph("Ist der Garten/Hof sicher eingezäunt?");
+            saveGarten.SetFontSize(10);
+
+            Paragraph jaTextsaveData = new Paragraph("Ja");
+            jaTextsaveData.SetFontSize(10);
+            jaTextsaveData.SetFixedPosition(1, 57, 440, 20);
+
+            Paragraph neinTextsaveDataa = new Paragraph("Nein");
+            neinTextsaveDataa.SetFontSize(10);
+            neinTextsaveDataa.SetFixedPosition(1, 120, 440, 200);
+
+            Paragraph descriptionTextsaveData = new Paragraph("Kein Hof oder Garten vorhanden");
+            descriptionTextsaveData.SetFontSize(10);
+            descriptionTextsaveData.SetFixedPosition(1, 183, 440, 200);
+
+            RadioFormFieldBuilder saveDatafbuilder = new RadioFormFieldBuilder(pdf, "proofbuilder");
+            PdfButtonFormField saveDataRadioGroup = saveDatafbuilder.CreateRadioGroup();
+            Rectangle saveDatarectJa = new Rectangle(37, 440, 15, 15);
+            Rectangle saveDatarectNein = new Rectangle(100, 440, 15, 15);
+            Rectangle saveDatarectPart = new Rectangle(163, 440, 15, 15);
+            PdfFormAnnotation saveDatafieldJa = proofbuilder
+                    .CreateRadioButton("saveDatarectJa", saveDatarectJa)
+                    .SetBorderWidth(1)
+                    .SetBorderColor(ColorConstants.BLACK)
+                    .SetBackgroundColor(ColorConstants.WHITE);
+            PdfFormAnnotation saveDatafieldNein = proofbuilder
+                    .CreateRadioButton("saveDatarectNein", saveDatarectNein)
+                    .SetBorderWidth(1)
+                    .SetBorderColor(ColorConstants.BLACK)
+                    .SetBackgroundColor(ColorConstants.WHITE);
+            PdfFormAnnotation saveDatafieldPart = proofbuilder
+                   .CreateRadioButton("saveDatarectPart", saveDatarectPart)
+                   .SetBorderWidth(1)
+                   .SetBorderColor(ColorConstants.BLACK)
+                   .SetBackgroundColor(ColorConstants.WHITE);
+            saveDataRadioGroup.AddKid(saveDatafieldJa);
+            saveDataRadioGroup.AddKid(saveDatafieldNein);
+            saveDataRadioGroup.AddKid(saveDatafieldPart);
 
             PdfAcroForm form = PdfFormCreator.GetAcroForm(pdf, true);
 
@@ -166,6 +203,13 @@ class Example
             document.Add(jaTextPermisionData);
             document.Add(neinTextPermisionData);
             document.Add(descriptionTextPermisionData);
+            document.Add(newLine);
+            document.Add(newLine);
+            document.Add(newLine);
+            document.Add(saveGarten);
+            document.Add(jaTextsaveData);
+            document.Add(neinTextsaveDataa);
+            document.Add(descriptionTextsaveData);
 
             form.AddField(nameField);
             form.AddField(dateField);
@@ -176,6 +220,7 @@ class Example
             form.AddField(proofRadioGroup);
             form.AddField(explanationField);
             form.AddField(permisionRadioGroup);
+            form.AddField(saveDataRadioGroup);
 
             document.Close();
 
