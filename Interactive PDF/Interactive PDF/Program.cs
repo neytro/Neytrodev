@@ -181,6 +181,46 @@ class Example
             saveDataRadioGroup.AddKid(saveDatafieldNein);
             saveDataRadioGroup.AddKid(saveDatafieldPart);
 
+            Paragraph howHeight = new Paragraph("Wenn ja, wie hoch?");
+            howHeight.SetFontSize(10);
+            PdfTextFormField howHeightField = new TextFormFieldBuilder(pdf, "howHeightField")
+               .SetWidgetRectangle(new Rectangle(180, 413, 370, 18)).CreateText();
+
+
+            Paragraph familyProofData = new Paragraph("Sind alle Familienmitglieder mit der Adoption des Hundes einverstanden?");
+            familyProofData.SetFontSize(10);
+
+            Paragraph jafamilyProofData = new Paragraph("Ja");
+            jafamilyProofData.SetFontSize(10);
+            jafamilyProofData.SetFixedPosition(1, 57, 360, 20);
+
+            Paragraph neinfamilyProofData = new Paragraph("Nein");
+            neinfamilyProofData.SetFontSize(10);
+            neinfamilyProofData.SetFixedPosition(1, 120, 360, 40);
+
+            RadioFormFieldBuilder familyProofbuilder = new RadioFormFieldBuilder(pdf, "familyProofbuilder");
+            PdfButtonFormField familyProoRadioGroup = familyProofbuilder.CreateRadioGroup();
+            Rectangle rectJafamilyProof = new Rectangle(37, 360, 15, 15);
+            Rectangle rectNeinfamilyProof = new Rectangle(100, 360, 15, 15);
+            PdfFormAnnotation fieldJafamilyProof = proofbuilder
+                    .CreateRadioButton("rectJafamilyProo", rectJafamilyProof)
+                    .SetBorderWidth(1)
+                    .SetBorderColor(ColorConstants.BLACK)
+                    .SetBackgroundColor(ColorConstants.WHITE);
+            PdfFormAnnotation fieldNeinfamilyProof = proofbuilder
+                    .CreateRadioButton("rectNeinfamilyProo", rectNeinfamilyProof)
+                    .SetBorderWidth(1)
+                    .SetBorderColor(ColorConstants.BLACK)
+                    .SetBackgroundColor(ColorConstants.WHITE);
+
+            familyProoRadioGroup.AddKid(fieldJafamilyProof);
+            familyProoRadioGroup.AddKid(fieldNeinfamilyProof);
+
+            Paragraph whereVacation = new Paragraph("Wo wird der Hund im Fall einer Erkrankung, Abwesenheit oder eines Urlaubs untergebracht?");
+            whereVacation.SetFontSize(10);
+            PdfTextFormField whereVacationField = new TextFormFieldBuilder(pdf, "whereVacationField")
+               .SetWidgetRectangle(new Rectangle(37,300, 515, 18)).CreateText();
+
             PdfAcroForm form = PdfFormCreator.GetAcroForm(pdf, true);
 
             document.Add(paragraph);
@@ -210,6 +250,18 @@ class Example
             document.Add(jaTextsaveData);
             document.Add(neinTextsaveDataa);
             document.Add(descriptionTextsaveData);
+            document.Add(newLine);
+            document.Add(newLine);
+            document.Add(newLine);
+            document.Add(howHeight);
+            document.Add(newLine);
+            document.Add(familyProofData);
+            document.Add(jafamilyProofData);
+            document.Add(neinfamilyProofData);
+            document.Add(newLine);
+            document.Add(newLine);
+            document.Add(newLine);
+            document.Add(whereVacation);
 
             form.AddField(nameField);
             form.AddField(dateField);
@@ -221,6 +273,9 @@ class Example
             form.AddField(explanationField);
             form.AddField(permisionRadioGroup);
             form.AddField(saveDataRadioGroup);
+            form.AddField(howHeightField);
+            form.AddField(familyProoRadioGroup);
+            form.AddField(whereVacationField);
 
             document.Close();
 
