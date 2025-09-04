@@ -219,7 +219,36 @@ class Example
             Paragraph whereVacation = new Paragraph("Wo wird der Hund im Fall einer Erkrankung, Abwesenheit oder eines Urlaubs untergebracht?");
             whereVacation.SetFontSize(10);
             PdfTextFormField whereVacationField = new TextFormFieldBuilder(pdf, "whereVacationField")
-               .SetWidgetRectangle(new Rectangle(37,300, 515, 18)).CreateText();
+               .SetWidgetRectangle(new Rectangle(37,315, 515, 18)).CreateText();
+
+            Paragraph alergieData = new Paragraph("Sind bei einem Familienmitglied Allergien gegen Hunde bekannt?");
+            alergieData.SetFontSize(10);
+
+            Paragraph jaalergieData = new Paragraph("Ja");
+            jaalergieData.SetFontSize(10);
+            jaalergieData.SetFixedPosition(1, 57, 280, 20);
+
+            Paragraph neinalergieData = new Paragraph("Nein");
+            neinalergieData.SetFontSize(10);
+            neinalergieData.SetFixedPosition(1, 120, 280, 40);
+
+            RadioFormFieldBuilder alergiebuilder = new RadioFormFieldBuilder(pdf, "alergiebuilder");
+            PdfButtonFormField alergieRadioGroup = alergiebuilder.CreateRadioGroup();
+            Rectangle rectJaalergie = new Rectangle(37, 280, 15, 15);
+            Rectangle rectNeinalergie = new Rectangle(100, 280, 15, 15);
+            PdfFormAnnotation fieldJaalergie = proofbuilder
+                    .CreateRadioButton("rectJaalergie", rectJaalergie)
+                    .SetBorderWidth(1)
+                    .SetBorderColor(ColorConstants.BLACK)
+                    .SetBackgroundColor(ColorConstants.WHITE);
+            PdfFormAnnotation fieldNeinalergie = proofbuilder
+                    .CreateRadioButton("rectNeinalergieo", rectNeinalergie)
+                    .SetBorderWidth(1)
+                    .SetBorderColor(ColorConstants.BLACK)
+                    .SetBackgroundColor(ColorConstants.WHITE);
+
+            alergieRadioGroup.AddKid(fieldJaalergie);
+            alergieRadioGroup.AddKid(fieldNeinalergie);
 
             PdfAcroForm form = PdfFormCreator.GetAcroForm(pdf, true);
 
@@ -262,6 +291,11 @@ class Example
             document.Add(newLine);
             document.Add(newLine);
             document.Add(whereVacation);
+            document.Add(newLine);
+            document.Add(newLine);
+            document.Add(alergieData);
+            document.Add(jaalergieData);
+            document.Add(neinalergieData);
 
             form.AddField(nameField);
             form.AddField(dateField);
@@ -276,6 +310,7 @@ class Example
             form.AddField(howHeightField);
             form.AddField(familyProoRadioGroup);
             form.AddField(whereVacationField);
+            form.AddField(alergieRadioGroup);
 
             document.Close();
 
