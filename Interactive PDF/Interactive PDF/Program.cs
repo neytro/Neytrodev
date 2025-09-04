@@ -9,17 +9,26 @@ using iText.Layout.Properties;
 using iText.Forms.Form.Element;
 using Aspose.Words.Fields;
 using iText.Kernel.Colors;
+using iText.IO.Image;
+using iText.Kernel.XMP.Impl.XPath;
 
 class Example
 {
     static void Main()
     {
         string dest = @"E:\Programowanie\neytrodev\Interactive PDF\newPdf.pdf";
-        
+        string logo = @"E:\Programowanie\neytrodev\Interactive PDF\logo.jpg";
+
         using (PdfWriter writer = new PdfWriter(dest))
         using (PdfDocument pdf = new PdfDocument(writer))
         using (Document document = new Document(pdf, PageSize.A4))
         {
+
+            ImageData imageData = ImageDataFactory.Create(logo);
+            Image image = new Image(imageData);
+            image.ScaleToFit(100, 100);       
+            image.SetFixedPosition(450, 760); 
+
             Paragraph paragraph = new Paragraph("Vorkontrollbogen Adoption");
             paragraph.SetFontSize(20);
 
@@ -72,7 +81,7 @@ class Example
             descriptionTextProofData.SetFixedPosition(1, 183, 555, 200);
 
             RadioFormFieldBuilder proofbuilder = new RadioFormFieldBuilder(pdf, "proofbuilder");
-            PdfButtonFormField proofRadioGroup = proofbuilder.CreateRadioGroup();
+            PdfButtonFormField prooDatafRadioGroup = proofbuilder.CreateRadioGroup();
             Rectangle rectJa = new Rectangle(37, 555, 15, 15);
             Rectangle rectNein = new Rectangle(100, 555, 15, 15);
             Rectangle rectPart = new Rectangle(163, 555, 15, 15);
@@ -91,9 +100,9 @@ class Example
                    .SetBorderWidth(1)
                    .SetBorderColor(ColorConstants.BLACK)
                    .SetBackgroundColor(ColorConstants.WHITE);
-            proofRadioGroup.AddKid(fieldJa);
-            proofRadioGroup.AddKid(fieldNein);
-            proofRadioGroup.AddKid(fieldPart);
+            prooDatafRadioGroup.AddKid(fieldJa);
+            prooDatafRadioGroup.AddKid(fieldNein);
+            prooDatafRadioGroup.AddKid(fieldPart);
 
             Paragraph newLine = new Paragraph("");
 
@@ -157,7 +166,7 @@ class Example
             descriptionTextsaveData.SetFontSize(10);
             descriptionTextsaveData.SetFixedPosition(1, 183, 440, 200);
 
-            RadioFormFieldBuilder saveDatafbuilder = new RadioFormFieldBuilder(pdf, "proofbuilder");
+            RadioFormFieldBuilder saveDatafbuilder = new RadioFormFieldBuilder(pdf, "saveDatafbuilder");
             PdfButtonFormField saveDataRadioGroup = saveDatafbuilder.CreateRadioGroup();
             Rectangle saveDatarectJa = new Rectangle(37, 440, 15, 15);
             Rectangle saveDatarectNein = new Rectangle(100, 440, 15, 15);
@@ -177,6 +186,7 @@ class Example
                    .SetBorderWidth(1)
                    .SetBorderColor(ColorConstants.BLACK)
                    .SetBackgroundColor(ColorConstants.WHITE);
+
             saveDataRadioGroup.AddKid(saveDatafieldJa);
             saveDataRadioGroup.AddKid(saveDatafieldNein);
             saveDataRadioGroup.AddKid(saveDatafieldPart);
@@ -332,6 +342,7 @@ class Example
             document.Add(wasInHomeData);
             document.Add(jawasInHomeData);
             document.Add(neinwasInHomeData);
+            document.Add(image);
 
 
             form.AddField(nameField);
@@ -340,7 +351,7 @@ class Example
             form.AddField(streetField);
             form.AddField(homeField);
             form.AddField(userIdField);
-            form.AddField(proofRadioGroup);
+            form.AddField(prooDatafRadioGroup);
             form.AddField(explanationField);
             form.AddField(permisionRadioGroup);
             form.AddField(saveDataRadioGroup);
