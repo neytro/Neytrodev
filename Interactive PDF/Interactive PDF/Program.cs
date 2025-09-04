@@ -250,6 +250,37 @@ class Example
             alergieRadioGroup.AddKid(fieldJaalergie);
             alergieRadioGroup.AddKid(fieldNeinalergie);
 
+            Paragraph wasInHomeData = new Paragraph("Lebten früher schon einmal Tiere im Haushalt?");
+            wasInHomeData.SetFontSize(10);
+
+            Paragraph jawasInHomeData = new Paragraph("Ja");
+            jawasInHomeData.SetFontSize(10);
+            jawasInHomeData.SetFixedPosition(1, 57, 240, 20);
+
+            Paragraph neinwasInHomeData = new Paragraph("Nein");
+            neinwasInHomeData.SetFontSize(10);
+            neinwasInHomeData.SetFixedPosition(1, 120, 240, 40);
+
+            RadioFormFieldBuilder wasInHomebuilder = new RadioFormFieldBuilder(pdf, "wasInHomebuilder");
+            PdfButtonFormField wasInHomeRadioGroup = wasInHomebuilder.CreateRadioGroup();
+            Rectangle rectJawasInHome = new Rectangle(37, 240, 15, 15);
+            Rectangle rectNeinwasInHome = new Rectangle(100, 240, 15, 15);
+            PdfFormAnnotation fieldJawasInHome = proofbuilder
+                    .CreateRadioButton("rectJawasInHome", rectJawasInHome)
+                    .SetBorderWidth(1)
+                    .SetBorderColor(ColorConstants.BLACK)
+                    .SetBackgroundColor(ColorConstants.WHITE);
+            PdfFormAnnotation fieldNeinwasInHome = proofbuilder
+                    .CreateRadioButton("rectNeinwasInHomeo", rectNeinwasInHome)
+                    .SetBorderWidth(1)
+                    .SetBorderColor(ColorConstants.BLACK)
+                    .SetBackgroundColor(ColorConstants.WHITE);
+
+            wasInHomeRadioGroup.AddKid(fieldJawasInHome);
+            wasInHomeRadioGroup.AddKid(fieldNeinwasInHome);
+
+
+
             PdfAcroForm form = PdfFormCreator.GetAcroForm(pdf, true);
 
             document.Add(paragraph);
@@ -296,6 +327,12 @@ class Example
             document.Add(alergieData);
             document.Add(jaalergieData);
             document.Add(neinalergieData);
+            document.Add(newLine);
+            document.Add(newLine);
+            document.Add(wasInHomeData);
+            document.Add(jawasInHomeData);
+            document.Add(neinwasInHomeData);
+
 
             form.AddField(nameField);
             form.AddField(dateField);
@@ -311,6 +348,7 @@ class Example
             form.AddField(familyProoRadioGroup);
             form.AddField(whereVacationField);
             form.AddField(alergieRadioGroup);
+            form.AddField(wasInHomeRadioGroup);
 
             document.Close();
 
