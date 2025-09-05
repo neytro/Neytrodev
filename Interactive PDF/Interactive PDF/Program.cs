@@ -11,6 +11,8 @@ using Aspose.Words.Fields;
 using iText.Kernel.Colors;
 using iText.IO.Image;
 using iText.Kernel.XMP.Impl.XPath;
+using iText.Kernel.Pdf.Action;
+using iText.Layout.Borders;
 
 class Example
 {
@@ -26,8 +28,8 @@ class Example
 
             ImageData imageData = ImageDataFactory.Create(logo);
             Image image = new Image(imageData);
-            image.ScaleToFit(100, 100);       
-            image.SetFixedPosition(450, 760); 
+            image.ScaleToFit(100, 100);
+            image.SetFixedPosition(450, 760);
 
             Paragraph paragraph = new Paragraph("Vorkontrollbogen Adoption");
             paragraph.SetFontSize(20);
@@ -35,7 +37,7 @@ class Example
             Paragraph name = new Paragraph("Name und PLZ des Hundes:");
             name.SetFontSize(10);
             PdfTextFormField nameField = new TextFormFieldBuilder(pdf, "nameFiled")
-               .SetWidgetRectangle(new Rectangle(180, 748,200, 18)).CreateText();
+               .SetWidgetRectangle(new Rectangle(180, 748, 200, 18)).CreateText();
 
             Paragraph date = new Paragraph("Datum der Vorkontrolle:");
             name.SetFontSize(10);
@@ -70,7 +72,7 @@ class Example
 
             Paragraph jaTextProofData = new Paragraph("Ja");
             jaTextProofData.SetFontSize(10);
-            jaTextProofData.SetFixedPosition(1,57, 555, 20);
+            jaTextProofData.SetFixedPosition(1, 57, 555, 20);
 
             Paragraph neinTextProofData = new Paragraph("Nein");
             neinTextProofData.SetFontSize(10);
@@ -109,7 +111,7 @@ class Example
             Paragraph explanation = new Paragraph("Erläuterung:");
             explanation.SetFontSize(10);
             PdfTextFormField explanationField = new TextFormFieldBuilder(pdf, "explanationField")
-               .SetWidgetRectangle(new Rectangle(180,530, 370, 18)).CreateText();
+               .SetWidgetRectangle(new Rectangle(180, 530, 370, 18)).CreateText();
 
             Paragraph permisson = new Paragraph("Liegt eine schriftliche Einverständniserklärung des Vermieters zur Hundehaltung vor?");
             permisson.SetFontSize(10);
@@ -229,7 +231,7 @@ class Example
             Paragraph whereVacation = new Paragraph("Wo wird der Hund im Fall einer Erkrankung, Abwesenheit oder eines Urlaubs untergebracht?");
             whereVacation.SetFontSize(10);
             PdfTextFormField whereVacationField = new TextFormFieldBuilder(pdf, "whereVacationField")
-               .SetWidgetRectangle(new Rectangle(37,315, 515, 18)).CreateText();
+               .SetWidgetRectangle(new Rectangle(37, 315, 515, 18)).CreateText();
 
             Paragraph alergieData = new Paragraph("Sind bei einem Familienmitglied Allergien gegen Hunde bekannt?");
             alergieData.SetFontSize(10);
@@ -294,9 +296,17 @@ class Example
             PdfTextFormField ifThennField = new TextFormFieldBuilder(pdf, "ifThenField")
                .SetWidgetRectangle(new Rectangle(180, 220, 370, 18)).CreateText();
 
-            Paragraph nameOfCompany = new Paragraph("„Free Dogs“ Vergessene Tiere in Not e.V.\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tTelefon: +49 151 / 5478 4497\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tGENODEF1MAR\n" + "Moorlager Weg 13 / Amtsgerichts-Eintrag: Kirchenweg 30 \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t E-Mail: info@VergesseneTiereinNot.de\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tRaiffeisen-Volksbank Fresena eG\n" + "26629 Großefehn / Amtsgerichts-Eintrag: 26624 Südbrookmerland \t\t\t\t\t\t\t\t\t\t\t\t\tWeb: https://VergesseneTiereinNot.de \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t   DE62 2836 1592 5200 2489 00\n" + "1. Vorsitzender: Günter Lübke\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t Steuernummer: 54/204/00789\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t   2. Vorsitzender: Harm Gronewold\n" + "1. und 2. Vorsitzender fungieren bis zur Bestätigung durch die nächste Hauptversammlung/Amtsgerichtseintragung ‚kooptiert‘. Der aktuelle Vorstand besteht nur aus der Kassenwartin und der Schriftführerin.\n" + "Kassenwartin: Sandra Bohlen\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t Register Nr.: VR 200882 AUR \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tSchriftführerin: Jessica Detmers\n" + "Gläubiger-ID: DE04ZZZ00002287351 \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t  PayPal-Zahlungen an free.dogs@web.de"
+            var webLink = new Paragraph();
+            webLink.SetFontSize(5);
+            webLink.SetFixedPosition(1, 255, 125, 100);
+            webLink.SetBorder(iText.Layout.Borders.Border.NO_BORDER);
 
-                                                     );
+            var link = new Link("Web: https://VergesseneTiereinNot.de",
+                PdfAction.CreateURI("https://VergesseneTiereinNot.de"));
+            webLink.Add(link);
+
+
+            Paragraph nameOfCompany = new Paragraph("„Free Dogs“ Vergessene Tiere in Not e.V.\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tTelefon: +49 151 / 5478 4497\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tGENODEF1MAR\n" + "Moorlager Weg 13 / Amtsgerichts-Eintrag: Kirchenweg 30 \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t E-Mail: info@VergesseneTiereinNot.de\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tRaiffeisen-Volksbank Fresena eG\n" + "26629 Großefehn / Amtsgerichts-Eintrag: 26624 Südbrookmerland \t\t\t\t\t\t\t\t\t\t\t\t\tWeb: https://VergesseneTiereinNot.de \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t   DE62 2836 1592 5200 2489 00\n" + "1. Vorsitzender: Günter Lübke\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t Steuernummer: 54/204/00789\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t   2. Vorsitzender: Harm Gronewold\n" + "1. und 2. Vorsitzender fungieren bis zur Bestätigung durch die nächste Hauptversammlung/Amtsgerichtseintragung ‚kooptiert‘. Der aktuelle Vorstand besteht nur aus der Kassenwartin und der Schriftführerin.\n" + "Kassenwartin: Sandra Bohlen\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t Register Nr.: VR 200882 AUR \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tSchriftführerin: Jessica Detmers\n" + "Gläubiger-ID: DE04ZZZ00002287351 \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t  PayPal-Zahlungen an free.dogs@web.de");
             nameOfCompany.SetFontSize(5);
 
             PdfAcroForm form = PdfFormCreator.GetAcroForm(pdf, true);
@@ -362,10 +372,8 @@ class Example
             document.Add(newLine);
             document.Add(newLine);
             document.Add(newLine);
+            document.Add(webLink);
             document.Add(nameOfCompany);
-
-
-
 
             form.AddField(nameField);
             form.AddField(dateField);
