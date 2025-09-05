@@ -289,6 +289,15 @@ class Example
             wasInHomeRadioGroup.AddKid(fieldJawasInHome);
             wasInHomeRadioGroup.AddKid(fieldNeinwasInHome);
 
+            Paragraph ifThen = new Paragraph("Wenn ja, welche?");
+            ifThen.SetFontSize(10);
+            PdfTextFormField ifThennField = new TextFormFieldBuilder(pdf, "ifThenField")
+               .SetWidgetRectangle(new Rectangle(180, 220, 370, 18)).CreateText();
+
+            Paragraph nameOfCompany = new Paragraph("„Free Dogs“ Vergessene Tiere in Not e.V.\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tTelefon: +49 151 / 5478 4497\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tGENODEF1MAR\n" +
+                                                     "Moorlager Weg 13 / Amtsgerichts-Eintrag: Kirchenweg 30 \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t E-Mail: info@VergesseneTiereinNot.de\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tRaiffeisen-Volksbank Fresena eG");
+            nameOfCompany.SetFontSize(5);
+
 
 
             PdfAcroForm form = PdfFormCreator.GetAcroForm(pdf, true);
@@ -343,6 +352,20 @@ class Example
             document.Add(jawasInHomeData);
             document.Add(neinwasInHomeData);
             document.Add(image);
+            document.Add(newLine);
+            document.Add(newLine);
+            document.Add(ifThen);
+            document.Add(newLine);
+            document.Add(newLine);
+            document.Add(newLine);
+            document.Add(newLine);
+            document.Add(newLine);
+            document.Add(newLine);
+            document.Add(newLine);
+            document.Add(newLine);
+            document.Add(nameOfCompany);
+
+
 
 
             form.AddField(nameField);
@@ -360,7 +383,7 @@ class Example
             form.AddField(whereVacationField);
             form.AddField(alergieRadioGroup);
             form.AddField(wasInHomeRadioGroup);
-
+            form.AddField(ifThennField);
             document.Close();
 
         }
