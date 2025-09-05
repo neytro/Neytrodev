@@ -295,10 +295,12 @@ class Example
                .SetWidgetRectangle(new Rectangle(180, 220, 370, 18)).CreateText();
 
             Paragraph nameOfCompany = new Paragraph("„Free Dogs“ Vergessene Tiere in Not e.V.\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tTelefon: +49 151 / 5478 4497\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tGENODEF1MAR\n" +
-                                                     "Moorlager Weg 13 / Amtsgerichts-Eintrag: Kirchenweg 30 \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t E-Mail: info@VergesseneTiereinNot.de\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tRaiffeisen-Volksbank Fresena eG");
+                                                     "Moorlager Weg 13 / Amtsgerichts-Eintrag: Kirchenweg 30 \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t E-Mail: info@VergesseneTiereinNot.de\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tRaiffeisen-Volksbank Fresena eG\n" +
+                                                     "26629 Großefehn / Amtsgerichts-Eintrag: 26624 Südbrookmerland \t\t\t\t\t\t\t\t\t\t\t\t\tWeb: https://VergesseneTiereinNot.de \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t   DE62 2836 1592 5200 2489 00\n" +
+                                                     "1. Vorsitzender: Günter Lübke\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t Steuernummer: 54/204/00789\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t   2. Vorsitzender: Harm Gronewold\n" +
+                                                     "1. und 2. Vorsitzender fungieren bis zur Bestätigung durch die nächste Hauptversammlung/Amtsgerichtseintragung ‚kooptiert‘. Der aktuelle Vorstand besteht nur aus der Kassenwartin und der Schriftführerin."
+                                                     );
             nameOfCompany.SetFontSize(5);
-
-
 
             PdfAcroForm form = PdfFormCreator.GetAcroForm(pdf, true);
 
