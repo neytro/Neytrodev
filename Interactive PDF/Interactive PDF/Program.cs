@@ -22,6 +22,8 @@ class Example
         string dest = @"E:\Programowanie\neytrodev\Interactive PDF\newPdf.pdf";
         string logo = @"E:\Programowanie\neytrodev\Interactive PDF\logo.jpg";
 
+
+        ///////////////////////////////////////First Page////////////////////////////////////////////////////////////
         using (PdfWriter writer = new PdfWriter(dest))
         using (PdfDocument pdf = new PdfDocument(writer))
         using (Document document = new Document(pdf, PageSize.A4))
@@ -300,7 +302,7 @@ class Example
 
             PdfLinkAnnotation linkAnnot = (PdfLinkAnnotation)new PdfLinkAnnotation(new Rectangle(0, 0, 0, 0))
             .SetAction(PdfAction.CreateURI("https://VergesseneTiereinNot.de"))
-            .SetBorder(new iText.Kernel.Pdf.PdfArray()); 
+            .SetBorder(new iText.Kernel.Pdf.PdfArray());
 
             var webLink = new Paragraph();
             webLink.SetFontSize(5);
@@ -308,7 +310,7 @@ class Example
             webLink.SetBorder(Border.NO_BORDER);
             webLink.SetFontColor(ColorConstants.BLUE);
 
-            var link = new Link("Web: https://VergesseneTiereinNot.de",linkAnnot);
+            var link = new Link("Web: https://VergesseneTiereinNot.de", linkAnnot);
             webLink.Add(link);
 
 
@@ -316,6 +318,8 @@ class Example
             nameOfCompany.SetFontSize(5);
 
             PdfAcroForm form = PdfFormCreator.GetAcroForm(pdf, true);
+
+
 
             document.Add(paragraph);
             document.Add(name);
@@ -386,7 +390,7 @@ class Example
             document.Add(newLine);
             document.Add(webLink);
             document.Add(nameOfCompany);
-          
+
 
             form.AddField(nameField);
             form.AddField(dateField);
@@ -404,6 +408,45 @@ class Example
             form.AddField(alergieRadioGroup);
             form.AddField(wasInHomeRadioGroup);
             form.AddField(ifThennField);
+            ///////////////////////////////////////Second Page////////////////////////////////////////////////////////////
+            pdf.AddNewPage();
+
+
+
+            Paragraph isInHomeData = new Paragraph("Leben aktuell andere Tiere im Haushalt?");
+            isInHomeData.SetFontSize(10);
+
+            Paragraph jaisInHomeData = new Paragraph("Ja");
+            jaisInHomeData.SetFontSize(10);
+            jaisInHomeData.SetFixedPosition(2, 57, 770, 20);
+
+            Paragraph neinisInHomeData = new Paragraph("Nein");
+            neinisInHomeData.SetFontSize(10);
+            neinisInHomeData.SetFixedPosition(2, 120, 770, 40);
+
+            RadioFormFieldBuilder isInHomebuilder = new RadioFormFieldBuilder(pdf, "isInHomebuilder");
+            PdfButtonFormField isInHomeRadioGroup = isInHomebuilder.CreateRadioGroup();
+            Rectangle rectJaisInHome = new Rectangle(37, 770, 15, 15);
+            Rectangle rectNeinisInHome = new Rectangle(100, 770, 15, 15);
+            PdfFormAnnotation fieldJaisInHome = proofbuilder
+                    .CreateRadioButton("rectJaisInHome", rectJaisInHome)
+                    .SetBorderWidth(1)
+                    .SetBorderColor(ColorConstants.BLACK)
+                    .SetBackgroundColor(ColorConstants.WHITE);
+            PdfFormAnnotation fieldNeinisInHome = proofbuilder
+                    .CreateRadioButton("rectNeinisInHomeo", rectNeinisInHome)
+                    .SetBorderWidth(1)
+                    .SetBorderColor(ColorConstants.BLACK)
+                    .SetBackgroundColor(ColorConstants.WHITE);
+
+            isInHomeRadioGroup.AddKid(fieldJaisInHome);
+            isInHomeRadioGroup.AddKid(fieldNeinisInHome);
+
+            document.Add(isInHomeData);
+            document.Add(jaisInHomeData);
+            document.Add(neinisInHomeData);
+            form.AddField(isInHomeRadioGroup);
+
             document.Close();
 
         }
