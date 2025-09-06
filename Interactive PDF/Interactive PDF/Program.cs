@@ -439,13 +439,22 @@ class Example
                     .SetBorderColor(ColorConstants.BLACK)
                     .SetBackgroundColor(ColorConstants.WHITE);
 
+            Paragraph isInHomeWhere = new Paragraph("Wenn ja, welche? (Alter, Geschlecht, kastriert/unkastriert, Verträglichkeit)");
+            isInHomeWhere.SetFontSize(10);
+            PdfTextFormField isInHomeWhereField = new TextFormFieldBuilder(pdf, "isInHomeWhereField")
+               .SetWidgetRectangle(new Rectangle(37, 690, 515, 54)).CreateMultilineText();
+
             isInHomeRadioGroup.AddKid(fieldJaisInHome);
             isInHomeRadioGroup.AddKid(fieldNeinisInHome);
 
             document.Add(isInHomeData);
+            document.Add(newLine);
+            document.Add(newLine);
             document.Add(jaisInHomeData);
             document.Add(neinisInHomeData);
+            document.Add(isInHomeWhere);
             form.AddField(isInHomeRadioGroup);
+            form.AddField(isInHomeWhereField);
 
             document.Close();
 
