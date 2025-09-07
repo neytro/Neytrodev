@@ -439,13 +439,30 @@ class Example
                     .SetBorderColor(ColorConstants.BLACK)
                     .SetBackgroundColor(ColorConstants.WHITE);
 
+            isInHomeRadioGroup.AddKid(fieldJaisInHome);
+            isInHomeRadioGroup.AddKid(fieldNeinisInHome);
+
             Paragraph isInHomeWhere = new Paragraph("Wenn ja, welche? (Alter, Geschlecht, kastriert/unkastriert, Verträglichkeit)");
             isInHomeWhere.SetFontSize(10);
             PdfTextFormField isInHomeWhereField = new TextFormFieldBuilder(pdf, "isInHomeWhereField")
                .SetWidgetRectangle(new Rectangle(37, 690, 515, 54)).CreateMultilineText();
 
-            isInHomeRadioGroup.AddKid(fieldJaisInHome);
-            isInHomeRadioGroup.AddKid(fieldNeinisInHome);
+            Paragraph areDogsDead = new Paragraph("Sind frühere Haustiere verstorben oder mussten abgegeben werden? Bitte mit Begründung");
+            areDogsDead.SetFontSize(10);
+            PdfTextFormField areDogsDeadField = new TextFormFieldBuilder(pdf, "areDogsDeadField")
+               .SetWidgetRectangle(new Rectangle(37, 610, 515, 54)).CreateMultilineText();
+
+            Paragraph howLongAlone = new Paragraph("Wie lange wird der Hund in der Regel allein sein?");
+            howLongAlone.SetFontSize(10);
+            PdfTextFormField howLongAloneField = new TextFormFieldBuilder(pdf, "howLongAloneField")
+               .SetWidgetRectangle(new Rectangle(37, 570, 515, 18)).CreateText();
+
+            Paragraph howLongWalk= new Paragraph("Wie oft und lange werden Spaziergänge eingeplant?");
+            howLongWalk.SetFontSize(10);
+            PdfTextFormField howLongWalkField = new TextFormFieldBuilder(pdf, "howLongWalkField")
+               .SetWidgetRectangle(new Rectangle(37, 520, 515, 18)).CreateText();
+
+
 
             document.Add(isInHomeData);
             document.Add(newLine);
@@ -453,8 +470,31 @@ class Example
             document.Add(jaisInHomeData);
             document.Add(neinisInHomeData);
             document.Add(isInHomeWhere);
+            document.Add(newLine);
+            document.Add(newLine);
+            document.Add(newLine);
+            document.Add(newLine);
+            document.Add(newLine);
+            document.Add(newLine);
+            document.Add(newLine);
+            document.Add(areDogsDead);
+            document.Add(newLine);
+            document.Add(newLine);
+            document.Add(newLine);
+            document.Add(newLine);
+            document.Add(newLine);
+            document.Add(newLine);
+            document.Add(newLine);
+            document.Add(howLongAlone);
+            document.Add(newLine);
+            document.Add(newLine);
+            document.Add(newLine);
+            document.Add(howLongWalk);
             form.AddField(isInHomeRadioGroup);
             form.AddField(isInHomeWhereField);
+            form.AddField(areDogsDeadField);
+            form.AddField(howLongAloneField);
+            form.AddField(howLongWalkField);
 
             document.Close();
 
