@@ -462,6 +462,85 @@ class Example
             PdfTextFormField howLongWalkField = new TextFormFieldBuilder(pdf, "howLongWalkField")
                .SetWidgetRectangle(new Rectangle(37, 520, 515, 18)).CreateText();
 
+            Paragraph whoPlay = new Paragraph("Wie soll der Hund beschäftigt werden?");
+            whoPlay.SetFontSize(10);
+            PdfTextFormField whoPlayField = new TextFormFieldBuilder(pdf, "whoPlayField")
+               .SetWidgetRectangle(new Rectangle(37, 470, 515, 18)).CreateText();
+
+
+            Paragraph findTrainer = new Paragraph("Ist der Garten/Hof sicher eingezäunt?");
+            findTrainer.SetFontSize(10);
+
+            Paragraph jaTextfindTrainer = new Paragraph("Ja");
+            jaTextfindTrainer.SetFontSize(10);
+            jaTextfindTrainer.SetFixedPosition(2, 57, 430, 20);
+
+            Paragraph neinTextfindTrainera = new Paragraph("Nein");
+            neinTextfindTrainera.SetFontSize(10);
+            neinTextfindTrainera.SetFixedPosition(2, 120, 430, 200);
+
+            Paragraph descriptionTextfindTrainer = new Paragraph("Nur wenn nötig");
+            descriptionTextfindTrainer.SetFontSize(10);
+            descriptionTextfindTrainer.SetFixedPosition(2, 183, 430, 200);
+
+            RadioFormFieldBuilder findTrainerfbuilder = new RadioFormFieldBuilder(pdf, "findTrainerfbuilder");
+            PdfButtonFormField findTrainerRadioGroup = findTrainerfbuilder.CreateRadioGroup();
+            Rectangle findTrainerrectJa = new Rectangle(37, 430, 15, 15);
+            Rectangle findTrainerrectNein = new Rectangle(100, 430, 15, 15);
+            Rectangle findTrainerrectPart = new Rectangle(163, 430, 15, 15);
+            PdfFormAnnotation findTrainerfieldJa = proofbuilder
+                    .CreateRadioButton("findTrainerrectJa", findTrainerrectJa)
+                    .SetBorderWidth(1)
+                    .SetBorderColor(ColorConstants.BLACK)
+                    .SetBackgroundColor(ColorConstants.WHITE);
+            PdfFormAnnotation findTrainerfieldNein = proofbuilder
+                    .CreateRadioButton("findTrainerrectNein", findTrainerrectNein)
+                    .SetBorderWidth(1)
+                    .SetBorderColor(ColorConstants.BLACK)
+                    .SetBackgroundColor(ColorConstants.WHITE);
+            PdfFormAnnotation findTrainerfieldPart = proofbuilder
+                   .CreateRadioButton("findTrainerrectPart", findTrainerrectPart)
+                   .SetBorderWidth(1)
+                   .SetBorderColor(ColorConstants.BLACK)
+                   .SetBackgroundColor(ColorConstants.WHITE);
+
+            findTrainerRadioGroup.AddKid(findTrainerfieldJa);
+            findTrainerRadioGroup.AddKid(findTrainerfieldNein);
+            findTrainerRadioGroup.AddKid(findTrainerfieldPart);
+
+            Paragraph whatExpectation = new Paragraph("Welche Erwartungen haben die Interessent*innen an den Hund?");
+            whatExpectation.SetFontSize(10);
+            PdfTextFormField whatExpectationField = new TextFormFieldBuilder(pdf, "whatExpectationField")
+               .SetWidgetRectangle(new Rectangle(37, 345, 515, 54)).CreateMultilineText();
+
+            Paragraph isBehaveStableData = new Paragraph("Ist den Interessent*innen bewusst, dass es keine „Garantie“ auf die Persönlichkeitsentwicklung/gesundheitliche Entwicklung des Hundes gibt? sehr ängstlich, unsicher, nicht stubenrein, nicht verträglich mit anderen Tieren");
+            isBehaveStableData.SetFontSize(10);
+
+            Paragraph jaisBehaveStableData = new Paragraph("Ja");
+            jaisBehaveStableData.SetFontSize(10);
+            jaisBehaveStableData.SetFixedPosition(2, 57, 285, 20);
+
+            Paragraph neinisBehaveStableData = new Paragraph("Nein");
+            neinisBehaveStableData.SetFontSize(10);
+            neinisBehaveStableData.SetFixedPosition(2, 120, 285, 40);
+
+            RadioFormFieldBuilder isBehaveStablebuilder = new RadioFormFieldBuilder(pdf, "isBehaveStablebuilder");
+            PdfButtonFormField isBehaveStableRadioGroup = isBehaveStablebuilder.CreateRadioGroup();
+            Rectangle rectJaisBehaveStable = new Rectangle(37, 285, 15, 15);
+            Rectangle rectNeinisBehaveStable = new Rectangle(100, 285, 15, 15);
+            PdfFormAnnotation fieldJaisBehaveStable = proofbuilder
+                    .CreateRadioButton("rectJaisBehaveStable", rectJaisBehaveStable)
+                    .SetBorderWidth(1)
+                    .SetBorderColor(ColorConstants.BLACK)
+                    .SetBackgroundColor(ColorConstants.WHITE);
+            PdfFormAnnotation fieldNeinisBehaveStable = proofbuilder
+                    .CreateRadioButton("rectNeinisBehaveStableo", rectNeinisBehaveStable)
+                    .SetBorderWidth(1)
+                    .SetBorderColor(ColorConstants.BLACK)
+                    .SetBackgroundColor(ColorConstants.WHITE);
+
+            isBehaveStableRadioGroup.AddKid(fieldJaisBehaveStable);
+            isBehaveStableRadioGroup.AddKid(fieldNeinisBehaveStable);
 
 
             document.Add(isInHomeData);
@@ -490,11 +569,45 @@ class Example
             document.Add(newLine);
             document.Add(newLine);
             document.Add(howLongWalk);
+            document.Add(newLine);
+            document.Add(newLine);
+            document.Add(newLine);
+            document.Add(whoPlay);
+            document.Add(newLine);
+            document.Add(newLine);
+            document.Add(newLine);
+            document.Add(findTrainer);
+            document.Add(jaTextfindTrainer);
+            document.Add(neinTextfindTrainera);
+            document.Add(descriptionTextfindTrainer);
+            document.Add(newLine);
+            document.Add(newLine);
+            document.Add(newLine);
+            document.Add(whatExpectation);
+            document.Add(newLine);
+            document.Add(newLine);
+            document.Add(newLine);
+            document.Add(newLine);
+            document.Add(newLine);
+            document.Add(newLine);
+            document.Add(newLine);
+            document.Add(isBehaveStableData);
+            document.Add(newLine);
+            document.Add(newLine);
+            document.Add(newLine);
+            document.Add(jaisBehaveStableData);
+            document.Add(neinisBehaveStableData);
+
+
             form.AddField(isInHomeRadioGroup);
             form.AddField(isInHomeWhereField);
             form.AddField(areDogsDeadField);
             form.AddField(howLongAloneField);
             form.AddField(howLongWalkField);
+            form.AddField(whoPlayField);
+            form.AddField(findTrainerRadioGroup);
+            form.AddField(whatExpectationField);
+            form.AddField(isBehaveStableRadioGroup);
 
             document.Close();
 
