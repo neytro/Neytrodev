@@ -411,6 +411,10 @@ class Example
             ///////////////////////////////////////Second Page////////////////////////////////////////////////////////////
             pdf.AddNewPage();
 
+            ImageData imageDataPageTwo = ImageDataFactory.Create(logo);
+            Image imagePagetwo = new Image(imageData);
+            imagePagetwo.ScaleToFit(100, 100);
+            imagePagetwo.SetFixedPosition(2, 450, 760);
 
 
             Paragraph isInHomeData = new Paragraph("Leben aktuell andere Tiere im Haushalt?");
@@ -547,6 +551,8 @@ class Example
             PdfTextFormField whatToDowithDognField = new TextFormFieldBuilder(pdf, "whatToDowithDogField")
                .SetWidgetRectangle(new Rectangle(37, 180, 515, 54)).CreateMultilineText();
 
+            document.Add(imagePagetwo);
+
 
             document.Add(isInHomeData);
             document.Add(newLine);
@@ -604,6 +610,23 @@ class Example
             document.Add(neinisBehaveStableData);
             document.Add(newLine);
             document.Add(whatToDowithDog);
+            document.Add(newLine);
+            document.Add(newLine);
+            document.Add(newLine);
+            document.Add(newLine);
+            document.Add(newLine);
+            document.Add(newLine);
+            document.Add(newLine);
+            document.Add(newLine);
+            document.Add(newLine);
+            document.Add(newLine);
+            document.Add(newLine);
+            document.Add(newLine);
+            document.Add(newLine);
+            document.Add(newLine);
+            document.Add(newLine);
+            document.Add(newLine);
+            document.Add(nameOfCompany);
 
 
             form.AddField(isInHomeRadioGroup);
