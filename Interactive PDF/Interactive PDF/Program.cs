@@ -468,7 +468,7 @@ class Example
                .SetWidgetRectangle(new Rectangle(37, 470, 515, 18)).CreateText();
 
 
-            Paragraph findTrainer = new Paragraph("Ist der Garten/Hof sicher eingezäunt?");
+            Paragraph findTrainer = new Paragraph("Soll eine Hundeschule/Hundetrainer*in besucht werden?");
             findTrainer.SetFontSize(10);
 
             Paragraph jaTextfindTrainer = new Paragraph("Ja");
@@ -542,6 +542,11 @@ class Example
             isBehaveStableRadioGroup.AddKid(fieldJaisBehaveStable);
             isBehaveStableRadioGroup.AddKid(fieldNeinisBehaveStable);
 
+            Paragraph whatToDowithDog = new Paragraph("Welche unerwünschten Verhaltensweisen bzw. Eigenschaften würden zu einer Abgabe des Hundes führen? Bitte Erläuterung nennen lassen");
+            whatToDowithDog.SetFontSize(10);
+            PdfTextFormField whatToDowithDognField = new TextFormFieldBuilder(pdf, "whatToDowithDogField")
+               .SetWidgetRectangle(new Rectangle(37, 180, 515, 54)).CreateMultilineText();
+
 
             document.Add(isInHomeData);
             document.Add(newLine);
@@ -597,6 +602,8 @@ class Example
             document.Add(newLine);
             document.Add(jaisBehaveStableData);
             document.Add(neinisBehaveStableData);
+            document.Add(newLine);
+            document.Add(whatToDowithDog);
 
 
             form.AddField(isInHomeRadioGroup);
@@ -608,6 +615,7 @@ class Example
             form.AddField(findTrainerRadioGroup);
             form.AddField(whatExpectationField);
             form.AddField(isBehaveStableRadioGroup);
+            form.AddField(whatToDowithDognField);
 
             document.Close();
 
