@@ -461,7 +461,7 @@ class Example
             PdfTextFormField howLongAloneField = new TextFormFieldBuilder(pdf, "howLongAloneField")
                .SetWidgetRectangle(new Rectangle(37, 570, 515, 18)).CreateText();
 
-            Paragraph howLongWalk= new Paragraph("Wie oft und lange werden Spaziergänge eingeplant?");
+            Paragraph howLongWalk = new Paragraph("Wie oft und lange werden Spaziergänge eingeplant?");
             howLongWalk.SetFontSize(10);
             PdfTextFormField howLongWalkField = new TextFormFieldBuilder(pdf, "howLongWalkField")
                .SetWidgetRectangle(new Rectangle(37, 520, 515, 18)).CreateText();
@@ -639,6 +639,111 @@ class Example
             form.AddField(whatExpectationField);
             form.AddField(isBehaveStableRadioGroup);
             form.AddField(whatToDowithDognField);
+
+            ///////////////////////////////////////Third Page////////////////////////////////////////////////////////////
+            pdf.AddNewPage();
+
+            ImageData imageDataPageThree = ImageDataFactory.Create(logo);
+            Image imagePageThree = new Image(imageData);
+            imagePageThree.ScaleToFit(100, 100);
+            imagePageThree.SetFixedPosition(3, 450, 760);
+
+            document.Add(imagePageThree);
+
+            Paragraph freeTimeWithDog = new Paragraph("Wie planen die Interessent:innen die erste Zeit der Eingewöhnung?");
+            freeTimeWithDog.SetFontSize(10);
+            PdfTextFormField freeTimeWithDogField = new TextFormFieldBuilder(pdf, "freeTimeWithDogField")
+               .SetWidgetRectangle(new Rectangle(37, 680, 515, 54)).CreateMultilineText();
+
+            Paragraph areCostIncludedData = new Paragraph("Sind die Kosten für Futter, Tierarzt, Steuern, Versicherung, etc. eingeplant?");
+            areCostIncludedData.SetFontSize(10);
+
+            Paragraph jaareCostIncludedData = new Paragraph("Ja");
+            jaareCostIncludedData.SetFontSize(10);
+            jaareCostIncludedData.SetFixedPosition(3, 57, 630, 20);
+
+            Paragraph neinareCostIncludedData = new Paragraph("Nein");
+            neinareCostIncludedData.SetFontSize(10);
+            neinareCostIncludedData.SetFixedPosition(3, 120, 630, 40);
+
+            RadioFormFieldBuilder areCostIncludedbuilder = new RadioFormFieldBuilder(pdf, "areCostIncludedbuilder");
+            PdfButtonFormField areCostIncludedRadioGroup = areCostIncludedbuilder.CreateRadioGroup();
+            Rectangle rectJaareCostIncluded = new Rectangle(37, 630, 15, 15);
+            Rectangle rectNeinareCostIncluded = new Rectangle(100, 630, 15, 15);
+            PdfFormAnnotation fieldJaareCostIncluded = proofbuilder
+                    .CreateRadioButton("rectJaareCostIncluded", rectJaareCostIncluded)
+                    .SetBorderWidth(1)
+                    .SetBorderColor(ColorConstants.BLACK)
+                    .SetBackgroundColor(ColorConstants.WHITE);
+            PdfFormAnnotation fieldNeinareCostIncluded = proofbuilder
+                    .CreateRadioButton("rectNeinareCostIncludedo", rectNeinareCostIncluded)
+                    .SetBorderWidth(1)
+                    .SetBorderColor(ColorConstants.BLACK)
+                    .SetBackgroundColor(ColorConstants.WHITE);
+
+            areCostIncludedRadioGroup.AddKid(fieldJaareCostIncluded);
+            areCostIncludedRadioGroup.AddKid(fieldNeinareCostIncluded);
+
+            Paragraph areInformedData = new Paragraph("Sind die Interessent*innen, darüber informiert, dass der Hund bei der Stadt angemeldet und bei der Versicherung mit in die Haftpflichtversicherung aufgenommen werden muss?");
+            areInformedData.SetFontSize(10);
+
+            Paragraph jaareInformedData = new Paragraph("Ja");
+            jaareInformedData.SetFontSize(10);
+            jaareInformedData.SetFixedPosition(3, 57, 570, 20);
+
+            Paragraph neinareInformedData = new Paragraph("Nein");
+            neinareInformedData.SetFontSize(10);
+            neinareInformedData.SetFixedPosition(3, 120, 570, 40);
+
+            RadioFormFieldBuilder areInformedbuilder = new RadioFormFieldBuilder(pdf, "areInformedbuilder");
+            PdfButtonFormField areInformedRadioGroup = areInformedbuilder.CreateRadioGroup();
+            Rectangle rectJaareInformed = new Rectangle(37, 570, 15, 15);
+            Rectangle rectNeinareInformed = new Rectangle(100, 570, 15, 15);
+            PdfFormAnnotation fieldJaareInformed = proofbuilder
+                    .CreateRadioButton("rectJaareInformed", rectJaareInformed)
+                    .SetBorderWidth(1)
+                    .SetBorderColor(ColorConstants.BLACK)
+                    .SetBackgroundColor(ColorConstants.WHITE);
+            PdfFormAnnotation fieldNeinareInformed = proofbuilder
+                    .CreateRadioButton("rectNeinareInformedo", rectNeinareInformed)
+                    .SetBorderWidth(1)
+                    .SetBorderColor(ColorConstants.BLACK)
+                    .SetBackgroundColor(ColorConstants.WHITE);
+
+            areInformedRadioGroup.AddKid(fieldJaareInformed);
+            areInformedRadioGroup.AddKid(fieldNeinareInformed);
+
+            document.Add(newLine);
+            document.Add(newLine);
+            document.Add(newLine);
+            document.Add(newLine);
+            document.Add(newLine);
+            document.Add(newLine);
+            document.Add(freeTimeWithDog);
+            document.Add(newLine);
+            document.Add(newLine);
+            document.Add(newLine);
+            document.Add(newLine);
+            document.Add(newLine);
+            document.Add(newLine);
+            document.Add(newLine);
+            document.Add(newLine);
+            document.Add(newLine);
+            document.Add(areCostIncludedData);
+            document.Add(jaareCostIncludedData);
+            document.Add(neinareCostIncludedData);
+            document.Add(newLine);
+            document.Add(newLine);
+            document.Add(newLine);
+            document.Add(areInformedData);
+            document.Add(jaareInformedData);
+            document.Add(neinareInformedData);
+
+
+            form.AddField(freeTimeWithDogField);
+            form.AddField(areCostIncludedRadioGroup);
+            form.AddField(areInformedRadioGroup);
+
 
             document.Close();
 
