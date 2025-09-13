@@ -786,6 +786,19 @@ class Example
             PdfTextFormField whoWasTestedField = new TextFormFieldBuilder(pdf, "whoWasTestedField")
                .SetWidgetRectangle(new Rectangle(37, 320, 515, 54)).CreateMultilineText();
 
+            Paragraph privateControle = new Paragraph("Persönlicher Eindruck der Vorkontrolle");
+            privateControle.SetFontSize(13);
+
+            Paragraph homeCondition = new Paragraph("Wie ist der Zustand der Wohnung/des Hauses?");
+            homeCondition.SetFontSize(10);
+            PdfTextFormField homeConditionField = new TextFormFieldBuilder(pdf, "homeConditionField")
+               .SetWidgetRectangle(new Rectangle(37, 230, 515, 18)).CreateText();
+
+            Paragraph famileBehave = new Paragraph("Wie war die Stimmung innerhalb der Familie?");
+            famileBehave.SetFontSize(10);
+            PdfTextFormField famileBehaveField = new TextFormFieldBuilder(pdf, "famileBehavenField")
+               .SetWidgetRectangle(new Rectangle(37, 185, 515, 18)).CreateText();
+
             document.Add(newLine);
             document.Add(newLine);
             document.Add(newLine);
@@ -828,6 +841,23 @@ class Example
             document.Add(newLine);
             document.Add(newLine);
             document.Add(whoWasTested);
+            document.Add(newLine);
+            document.Add(newLine);
+            document.Add(newLine);
+            document.Add(newLine);
+            document.Add(newLine);
+            document.Add(newLine);
+            document.Add(newLine);
+            document.Add(newLine);
+            document.Add(newLine);
+            document.Add(privateControle);
+            document.Add(newLine);
+            document.Add(homeCondition);
+            document.Add(newLine);
+            document.Add(newLine);
+            document.Add(newLine);
+            document.Add(famileBehave);
+
 
 
             form.AddField(freeTimeWithDogField);
@@ -836,6 +866,9 @@ class Example
             form.AddField(areTestedRadioGroup);
             form.AddField(areSecuredRadioGroup);
             form.AddField(whoWasTestedField);
+            form.AddField(homeConditionField);
+            form.AddField(famileBehaveField);
+
 
             document.Close();
 
