@@ -551,9 +551,17 @@ class Example
             PdfTextFormField whatToDowithDognField = new TextFormFieldBuilder(pdf, "whatToDowithDogField")
                .SetWidgetRectangle(new Rectangle(37, 180, 515, 54)).CreateMultilineText();
 
+
+            var webLink2 = new Paragraph();
+            webLink2.SetFontSize(5);
+            webLink2.SetFixedPosition(2, 255, 80, 100);
+            webLink2.SetBorder(Border.NO_BORDER);
+            webLink2.SetFontColor(ColorConstants.BLUE);
+
+            webLink2.Add(link);
+
+
             document.Add(imagePagetwo);
-
-
             document.Add(isInHomeData);
             document.Add(newLine);
             document.Add(newLine);
@@ -627,6 +635,8 @@ class Example
             document.Add(newLine);
             document.Add(newLine);
             document.Add(nameOfCompany);
+            document.Add(webLink2);
+
 
 
             form.AddField(isInHomeRadioGroup);
@@ -713,6 +723,69 @@ class Example
             areInformedRadioGroup.AddKid(fieldJaareInformed);
             areInformedRadioGroup.AddKid(fieldNeinareInformed);
 
+            Paragraph areTestedData = new Paragraph("Würden die Interessent*innen einen Test auf Mittelmeerkrankheiten durchführen lassen? Hintergrund: Mittelmeerkrankheiten haben eine Inkubationszeit von ca. 6 Monaten. Sinnvoll wäre ca. 1 Jahr nach Ankunft des Hundes in Deutschland, einen Bluttest auf Mittelmeerkrankheiten durchführen zu lassen");
+            areTestedData.SetFontSize(10);
+
+            Paragraph jaareTestedData = new Paragraph("Ja");
+            jaareTestedData.SetFontSize(10);
+            jaareTestedData.SetFixedPosition(3, 57, 490, 20);
+
+            Paragraph neinareTestedData = new Paragraph("Nein");
+            neinareTestedData.SetFontSize(10);
+            neinareTestedData.SetFixedPosition(3, 120, 490, 40);
+
+            RadioFormFieldBuilder areTestedbuilder = new RadioFormFieldBuilder(pdf, "areTestedbuilder");
+            PdfButtonFormField areTestedRadioGroup = areTestedbuilder.CreateRadioGroup();
+            Rectangle rectJaareTested = new Rectangle(37, 490, 15, 15);
+            Rectangle rectNeinareTested = new Rectangle(100, 490, 15, 15);
+            PdfFormAnnotation fieldJaareTested = proofbuilder
+                    .CreateRadioButton("rectJaareTested", rectJaareTested)
+                    .SetBorderWidth(1)
+                    .SetBorderColor(ColorConstants.BLACK)
+                    .SetBackgroundColor(ColorConstants.WHITE);
+            PdfFormAnnotation fieldNeinareTested = proofbuilder
+                    .CreateRadioButton("rectNeinareTestedo", rectNeinareTested)
+                    .SetBorderWidth(1)
+                    .SetBorderColor(ColorConstants.BLACK)
+                    .SetBackgroundColor(ColorConstants.WHITE);
+
+            areTestedRadioGroup.AddKid(fieldJaareTested);
+            areTestedRadioGroup.AddKid(fieldNeinareTested);
+
+            Paragraph areSecuredData = new Paragraph("Sind die Interessent:innen ausreichend über das Thema Sicherheit aufgeklärt worden? Sicherheitsgeschirr (Doppelsicherung), GPS Tracker, nicht alleine bzw. ungesichert in den Garten/Balkon lassen (trotz Zaun), Türen abschließen, Registrierung bei TASSO/Findefix");
+            areSecuredData.SetFontSize(10);
+
+            Paragraph jaareSecuredData = new Paragraph("Ja");
+            jaareSecuredData.SetFontSize(10);
+            jaareSecuredData.SetFixedPosition(3, 57, 415, 20);
+
+            Paragraph neinareSecuredData = new Paragraph("Nein");
+            neinareSecuredData.SetFontSize(10);
+            neinareSecuredData.SetFixedPosition(3, 120, 415, 40);
+
+            RadioFormFieldBuilder areSecuredbuilder = new RadioFormFieldBuilder(pdf, "areSecuredbuilder");
+            PdfButtonFormField areSecuredRadioGroup = areSecuredbuilder.CreateRadioGroup();
+            Rectangle rectJaareSecured = new Rectangle(37, 415, 15, 15);
+            Rectangle rectNeinareSecured = new Rectangle(100, 415, 15, 15);
+            PdfFormAnnotation fieldJaareSecured = proofbuilder
+                    .CreateRadioButton("rectJaareSecured", rectJaareSecured)
+                    .SetBorderWidth(1)
+                    .SetBorderColor(ColorConstants.BLACK)
+                    .SetBackgroundColor(ColorConstants.WHITE);
+            PdfFormAnnotation fieldNeinareSecured = proofbuilder
+                    .CreateRadioButton("rectNeinareSecuredo", rectNeinareSecured)
+                    .SetBorderWidth(1)
+                    .SetBorderColor(ColorConstants.BLACK)
+                    .SetBackgroundColor(ColorConstants.WHITE);
+
+            areSecuredRadioGroup.AddKid(fieldJaareSecured);
+            areSecuredRadioGroup.AddKid(fieldNeinareSecured);
+
+            Paragraph whoWasTested = new Paragraph("Welche Personen waren bei der Vorkontrolle anwesend? (Bitte namentlich aufführen)");
+            whoWasTested.SetFontSize(10);
+            PdfTextFormField whoWasTestedField = new TextFormFieldBuilder(pdf, "whoWasTestedField")
+               .SetWidgetRectangle(new Rectangle(37, 320, 515, 54)).CreateMultilineText();
+
             document.Add(newLine);
             document.Add(newLine);
             document.Add(newLine);
@@ -738,12 +811,31 @@ class Example
             document.Add(areInformedData);
             document.Add(jaareInformedData);
             document.Add(neinareInformedData);
+            document.Add(newLine);
+            document.Add(newLine);
+            document.Add(newLine);
+            document.Add(areTestedData);
+            document.Add(jaareTestedData);
+            document.Add(neinareTestedData);
+            document.Add(newLine);
+            document.Add(newLine);
+            document.Add(newLine);
+            document.Add(areSecuredData);
+            document.Add(jaareSecuredData);
+            document.Add(neinareSecuredData);
+            document.Add(newLine);
+            document.Add(newLine);
+            document.Add(newLine);
+            document.Add(newLine);
+            document.Add(whoWasTested);
 
 
             form.AddField(freeTimeWithDogField);
             form.AddField(areCostIncludedRadioGroup);
             form.AddField(areInformedRadioGroup);
-
+            form.AddField(areTestedRadioGroup);
+            form.AddField(areSecuredRadioGroup);
+            form.AddField(whoWasTestedField);
 
             document.Close();
 
