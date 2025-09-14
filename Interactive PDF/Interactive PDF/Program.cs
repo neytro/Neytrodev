@@ -1008,7 +1008,20 @@ class Example
             PdfTextFormField removeDocumentsField = new TextFormFieldBuilder(pdf, "removeDocumentsField")
                .SetWidgetRectangle(new Rectangle(37, 280, 515, 18)).CreateText();
 
+            CheckBoxFormFieldBuilder checkboxBuilder = new CheckBoxFormFieldBuilder(pdf, "checkboxBuilder");
+            PdfButtonFormField checkBox = checkboxBuilder
+               .SetWidgetRectangle(new Rectangle(37, 200, 15, 15))
+               .CreateCheckBox();
 
+
+            Paragraph approveContract = new Paragraph("Ich erkläre mich einverstanden mit der Erhebung, elektronischen Speicherung und internen Weitergabe der angegebenen Daten für die Zwecke meines Anliegens (siehe auch unsere Datenschutzhinweise).");
+            approveContract.SetFontSize(10);
+            approveContract.SetFixedPosition(4, 50, 150, 515);
+
+            checkBox.GetFirstFormAnnotation()
+                  .SetBorderWidth(2)                       
+                  .SetBorderColor(ColorConstants.BLUE)     
+                  .SetBackgroundColor(ColorConstants.LIGHT_GRAY); 
 
             document.Add(newLine);
             document.Add(newLine);
@@ -1055,6 +1068,8 @@ class Example
             document.Add(newLine);
             document.Add(newLine);
             document.Add(removeDocuments);
+            document.Add(approveContract);
+
 
             form.AddField(whichAnimalsAdditionalyField);
             form.AddField(howToUseToItField);
@@ -1065,6 +1080,9 @@ class Example
             form.AddField(controlerField);
             form.AddField(contactField);
             form.AddField(removeDocumentsField);
+            form.AddField(checkBox);
+
+
 
             document.Close();
 
