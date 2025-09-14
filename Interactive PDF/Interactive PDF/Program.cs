@@ -945,6 +945,50 @@ class Example
             DoYouKnowResponsibilityRadioGroup.AddKid(fieldJaDoYouKnowResponsibility);
             DoYouKnowResponsibilityRadioGroup.AddKid(fieldNeinDoYouKnowResponsibility);
 
+            Paragraph resultsTheControl = new Paragraph("Einschätzung der/des Vorkontrolleur*in");
+            resultsTheControl.SetFontSize(13);
+
+            Paragraph arrangementData = new Paragraph("Ich kann eine Vermittlung in diesen Haushalt");
+            arrangementData.SetFontSize(10);
+
+            Paragraph jaarrangementData = new Paragraph("Empfehlen");
+            jaarrangementData.SetFontSize(10);
+            jaarrangementData.SetFixedPosition(4, 57, 450, 100);
+
+            Paragraph neinarrangementData = new Paragraph("Nur bedingt empfehlen");
+            neinarrangementData.SetFontSize(10);
+            neinarrangementData.SetFixedPosition(4, 140, 450, 200);
+
+            Paragraph notRecomendetData = new Paragraph("Nicht empfehlen");
+            notRecomendetData.SetFontSize(10);
+            notRecomendetData.SetFixedPosition(4, 270, 450, 200);
+
+            RadioFormFieldBuilder arrangementbuilder = new RadioFormFieldBuilder(pdf, "arrangementbuilder");
+            PdfButtonFormField arrangementRadioGroup = arrangementbuilder.CreateRadioGroup();
+            Rectangle rectJaarrangement = new Rectangle(37, 450, 15, 15);
+            Rectangle rectNeinarrangement = new Rectangle(120, 450, 15, 15);
+            Rectangle rectNotRecomendetarrangement = new Rectangle(250, 450, 15, 15);
+            PdfFormAnnotation fieldJaarrangement = proofbuilder
+                    .CreateRadioButton("rectJaarrangement", rectJaarrangement)
+                    .SetBorderWidth(1)
+                    .SetBorderColor(ColorConstants.BLACK)
+                    .SetBackgroundColor(ColorConstants.WHITE);
+            PdfFormAnnotation fieldNeinarrangement = proofbuilder
+                    .CreateRadioButton("rectNeinarrangement", rectNeinarrangement)
+                    .SetBorderWidth(1)
+                    .SetBorderColor(ColorConstants.BLACK)
+                    .SetBackgroundColor(ColorConstants.WHITE);
+            PdfFormAnnotation fieldNotRecomendetarrangement = proofbuilder
+                    .CreateRadioButton("rectNotRecomendetarrangement", rectNotRecomendetarrangement)
+                    .SetBorderWidth(1)
+                    .SetBorderColor(ColorConstants.BLACK)
+                    .SetBackgroundColor(ColorConstants.WHITE);
+
+            arrangementRadioGroup.AddKid(fieldJaarrangement);
+            arrangementRadioGroup.AddKid(fieldNeinarrangement);
+            arrangementRadioGroup.AddKid(fieldNotRecomendetarrangement);
+
+
 
             document.Add(newLine);
             document.Add(newLine);
@@ -970,11 +1014,21 @@ class Example
             document.Add(DoYouKnowResponsibilityData);
             document.Add(jaDoYouKnowResponsibilityData);
             document.Add(neinDoYouKnowResponsibilityData);
+            document.Add(newLine);
+            document.Add(newLine);
+            document.Add(newLine);
+            document.Add(resultsTheControl);
+            document.Add(arrangementData);
+            document.Add(jaarrangementData);
+            document.Add(neinarrangementData);
+            document.Add(notRecomendetData);
+
 
             form.AddField(whichAnimalsAdditionalyField);
             form.AddField(howToUseToItField);
             form.AddField(whichConditionsField);
             form.AddField(DoYouKnowResponsibilityRadioGroup);
+            form.AddField(arrangementRadioGroup);
             document.Close();
 
         }
