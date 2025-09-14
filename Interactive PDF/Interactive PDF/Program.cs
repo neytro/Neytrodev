@@ -988,6 +988,26 @@ class Example
             arrangementRadioGroup.AddKid(fieldNeinarrangement);
             arrangementRadioGroup.AddKid(fieldNotRecomendetarrangement);
 
+            Paragraph grounds = new Paragraph("Begründung:");
+            grounds.SetFontSize(10);
+            PdfTextFormField groundsField = new TextFormFieldBuilder(pdf, "groundsField")
+               .SetWidgetRectangle(new Rectangle(37, 400, 515, 18)).CreateText();
+
+            Paragraph controler = new Paragraph("Name Vorkontrolleur*in:");
+            controler.SetFontSize(10);
+            PdfTextFormField controlerField = new TextFormFieldBuilder(pdf, "controlerField")
+               .SetWidgetRectangle(new Rectangle(37, 360, 515, 18)).CreateText();
+
+            Paragraph contact = new Paragraph("Kontaktmöglichkeit Vorkontrolleur*in:");
+            contact.SetFontSize(10);
+            PdfTextFormField contactField = new TextFormFieldBuilder(pdf, "contactField")
+               .SetWidgetRectangle(new Rectangle(37, 320, 515, 18)).CreateText();
+
+            Paragraph removeDocuments = new Paragraph("Ich habe die vom Verein erhaltenen Unterlagen für diese VK gelöscht:");
+            removeDocuments.SetFontSize(10);
+            PdfTextFormField removeDocumentsField = new TextFormFieldBuilder(pdf, "removeDocumentsField")
+               .SetWidgetRectangle(new Rectangle(37, 280, 515, 18)).CreateText();
+
 
 
             document.Add(newLine);
@@ -1022,13 +1042,30 @@ class Example
             document.Add(jaarrangementData);
             document.Add(neinarrangementData);
             document.Add(notRecomendetData);
-
+            document.Add(newLine);
+            document.Add(newLine);
+            document.Add(newLine);
+            document.Add(grounds);
+            document.Add(newLine);
+            document.Add(newLine);
+            document.Add(controler);
+            document.Add(newLine);
+            document.Add(newLine);
+            document.Add(contact);
+            document.Add(newLine);
+            document.Add(newLine);
+            document.Add(removeDocuments);
 
             form.AddField(whichAnimalsAdditionalyField);
             form.AddField(howToUseToItField);
             form.AddField(whichConditionsField);
             form.AddField(DoYouKnowResponsibilityRadioGroup);
             form.AddField(arrangementRadioGroup);
+            form.AddField(groundsField);
+            form.AddField(controlerField);
+            form.AddField(contactField);
+            form.AddField(removeDocumentsField);
+
             document.Close();
 
         }
