@@ -891,7 +891,90 @@ class Example
             form.AddField(homeConditionField);
             form.AddField(famileBehaveField);
 
+            ///////////////////////////////////////Fourth Page////////////////////////////////////////////////////////////
+            pdf.AddNewPage();
 
+            ImageData imageDataPageFourth = ImageDataFactory.Create(logo);
+            Image imagePageFourth = new Image(imageData);
+            imagePageFourth.ScaleToFit(100, 100);
+            imagePageFourth.SetFixedPosition(4, 450, 760);
+
+            document.Add(imagePageFourth);
+
+            Paragraph whichAnimalsAdditionaly = new Paragraph("Wenn weitere Tiere im Haushalt leben, in welchem Zustand waren die Tiere? (Gesundheitszustand/Verhalten)");
+            whichAnimalsAdditionaly.SetFontSize(10);
+            PdfTextFormField whichAnimalsAdditionalyField = new TextFormFieldBuilder(pdf, "whichAnimalsAdditionalyField")
+               .SetWidgetRectangle(new Rectangle(37, 720, 515, 18)).CreateText();
+
+            Paragraph howToUseToIt = new Paragraph("Wie sind die Interessent*innen mit den im Haushalt lebenden Tieren umgegangen?)");
+            howToUseToIt.SetFontSize(10);
+            PdfTextFormField howToUseToItField = new TextFormFieldBuilder(pdf, "howToUseToItField")
+               .SetWidgetRectangle(new Rectangle(37, 680, 515, 18)).CreateText();
+
+            Paragraph whichConditions = new Paragraph("Wie hat die Umgebung gewirkt? Wo liegt die Wohnung/das Haus? (Ruhig, ländlich, laut, Sackgasse, Hauptstraße, Innenstadt, etc.)");
+            whichConditions.SetFontSize(10);
+            PdfTextFormField whichConditionsField = new TextFormFieldBuilder(pdf, "whichConditionsField")
+               .SetWidgetRectangle(new Rectangle(37, 580, 515, 54)).CreateMultilineText();
+
+            Paragraph DoYouKnowResponsibilityData = new Paragraph("Wissen die Interessent*innen genau, was es bedeutet einen Tierschutzhund aufzunehmen und sind sich über mögliche Komplikationen bewusst?");
+            DoYouKnowResponsibilityData.SetFontSize(10);
+
+            Paragraph jaDoYouKnowResponsibilityData = new Paragraph("Ja");
+            jaDoYouKnowResponsibilityData.SetFontSize(10);
+            jaDoYouKnowResponsibilityData.SetFixedPosition(4, 57, 520, 20);
+
+            Paragraph neinDoYouKnowResponsibilityData = new Paragraph("Nein");
+            neinDoYouKnowResponsibilityData.SetFontSize(10);
+            neinDoYouKnowResponsibilityData.SetFixedPosition(4, 120, 520, 40);
+
+            RadioFormFieldBuilder DoYouKnowResponsibilitybuilder = new RadioFormFieldBuilder(pdf, "DoYouKnowResponsibilitybuilder");
+            PdfButtonFormField DoYouKnowResponsibilityRadioGroup = DoYouKnowResponsibilitybuilder.CreateRadioGroup();
+            Rectangle rectJaDoYouKnowResponsibility = new Rectangle(37, 520, 15, 15);
+            Rectangle rectNeinDoYouKnowResponsibility = new Rectangle(100, 520, 15, 15);
+            PdfFormAnnotation fieldJaDoYouKnowResponsibility = proofbuilder
+                    .CreateRadioButton("rectJaDoYouKnowResponsibility", rectJaDoYouKnowResponsibility)
+                    .SetBorderWidth(1)
+                    .SetBorderColor(ColorConstants.BLACK)
+                    .SetBackgroundColor(ColorConstants.WHITE);
+            PdfFormAnnotation fieldNeinDoYouKnowResponsibility = proofbuilder
+                    .CreateRadioButton("rectNeinDoYouKnowResponsibilityo", rectNeinDoYouKnowResponsibility)
+                    .SetBorderWidth(1)
+                    .SetBorderColor(ColorConstants.BLACK)
+                    .SetBackgroundColor(ColorConstants.WHITE);
+
+            DoYouKnowResponsibilityRadioGroup.AddKid(fieldJaDoYouKnowResponsibility);
+            DoYouKnowResponsibilityRadioGroup.AddKid(fieldNeinDoYouKnowResponsibility);
+
+
+            document.Add(newLine);
+            document.Add(newLine);
+            document.Add(newLine);
+            document.Add(newLine);
+            document.Add(newLine);
+            document.Add(newLine);
+            document.Add(whichAnimalsAdditionaly);
+            document.Add(newLine);
+            document.Add(newLine);
+            document.Add(howToUseToIt);
+            document.Add(newLine);
+            document.Add(newLine);
+            document.Add(whichConditions);
+            document.Add(newLine);
+            document.Add(newLine);
+            document.Add(newLine);
+            document.Add(newLine);
+            document.Add(newLine);
+            document.Add(newLine);
+            document.Add(newLine);
+            document.Add(newLine);
+            document.Add(DoYouKnowResponsibilityData);
+            document.Add(jaDoYouKnowResponsibilityData);
+            document.Add(neinDoYouKnowResponsibilityData);
+
+            form.AddField(whichAnimalsAdditionalyField);
+            form.AddField(howToUseToItField);
+            form.AddField(whichConditionsField);
+            form.AddField(DoYouKnowResponsibilityRadioGroup);
             document.Close();
 
         }
