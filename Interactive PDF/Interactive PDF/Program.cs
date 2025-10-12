@@ -1014,9 +1014,23 @@ class Example
                .CreateCheckBox();
 
 
-            Paragraph approveContract = new Paragraph("Ich erkläre mich einverstanden mit der Erhebung, elektronischen Speicherung und internen Weitergabe der angegebenen Daten für die Zwecke meines Anliegens (siehe auch unsere Datenschutzhinweise).");
+            PdfLinkAnnotation linkDataRequiment = (PdfLinkAnnotation)new PdfLinkAnnotation(new Rectangle(0, 0, 0, 0))
+                        .SetAction(PdfAction.CreateURI("https://www.freedogsmoordorf.de/datenschutzerklaerung/"))
+                        .SetBorder(new iText.Kernel.Pdf.PdfArray());
+
+            var webLinkRequiment = new Paragraph();
+            webLinkRequiment.SetFontSize(10);
+            webLinkRequiment.SetFixedPosition(4, 385, 190, 100);
+            webLinkRequiment.SetBorder(Border.NO_BORDER);
+            webLinkRequiment.SetFontColor(ColorConstants.BLUE);
+
+            var linkRequiment = new Link("Datenschutzhinweise", linkDataRequiment);
+            webLinkRequiment.Add(linkRequiment);
+
+
+            Paragraph approveContract = new Paragraph("Ich erkläre mich einverstanden mit der Erhebung, elektronischen Speicherung und internen Weitergabe der angegebenen Daten für die Zwecke meines Anliegens (siehe auch unsere \t\t\t\t\t\t\t\t  ).");
             approveContract.SetFontSize(10);
-            approveContract.SetFixedPosition(4, 50, 150, 515);
+            approveContract.SetFixedPosition(4, 55, 190, 515);
 
             checkBox.GetFirstFormAnnotation()
                   .SetBorderWidth(2)                       
@@ -1069,6 +1083,7 @@ class Example
             document.Add(newLine);
             document.Add(removeDocuments);
             document.Add(approveContract);
+            document.Add(webLinkRequiment);
 
 
             form.AddField(whichAnimalsAdditionalyField);
