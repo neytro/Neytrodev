@@ -1035,7 +1035,38 @@ class Example
             checkBox.GetFirstFormAnnotation()
                   .SetBorderWidth(2)                       
                   .SetBorderColor(ColorConstants.BLUE)     
-                  .SetBackgroundColor(ColorConstants.LIGHT_GRAY); 
+                  .SetBackgroundColor(ColorConstants.LIGHT_GRAY);
+
+            PdfTextFormField PlaceDataField = new TextFormFieldBuilder(pdf, "PlaceDataField")
+               .SetWidgetRectangle(new Rectangle(300, 150, 150, 18)).CreateText();
+
+            PdfTextFormField assignField = new TextFormFieldBuilder(pdf, "assignField")
+              .SetWidgetRectangle(new Rectangle(37, 150, 150, 18)).CreateText();
+
+            Paragraph PlaceData = new Paragraph("Ort, Datum Vorkontrolle");
+            PlaceData.SetFontSize(10);
+            PlaceData.SetFixedPosition(4, 40, 130, 515);
+
+            Paragraph assign = new Paragraph("Unterschrift");
+            assign.SetFontSize(10);
+            assign.SetFixedPosition(4, 300, 130, 515);
+
+            PdfLinkAnnotation linkAnnot4 = (PdfLinkAnnotation)new PdfLinkAnnotation(new Rectangle(0, 0, 0, 0))
+       .SetAction(PdfAction.CreateURI("https://VergesseneTiereinNot.de"))
+       .SetBorder(new iText.Kernel.Pdf.PdfArray());
+
+            var webLink4 = new Paragraph();
+            webLink4.SetFontSize(5);
+            webLink4.SetFixedPosition(4, 255, 76, 100);
+            webLink4.SetBorder(Border.NO_BORDER);
+            webLink4.SetFontColor(ColorConstants.BLUE);
+
+            var link4 = new Link("Web: https://VergesseneTiereinNot.de", linkAnnot4);
+            webLink4.Add(link4);
+
+
+            Paragraph nameOfCompany4 = new Paragraph("„Free Dogs“ Vergessene Tiere in Not e.V.\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tTelefon: +49 151 / 5478 4497\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tGENODEF1MAR\n" + "Moorlager Weg 13 / Amtsgerichts-Eintrag: Kirchenweg 30 \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t E-Mail: info@VergesseneTiereinNot.de\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tRaiffeisen-Volksbank Fresena eG\n" + "26629 Großefehn / Amtsgerichts-Eintrag: 26624 Südbrookmerland \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t DE62 2836 1592 5200 2489 00\n" + "1. Vorsitzender: Günter Lübke\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t Steuernummer: 54/204/00789\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t   2. Vorsitzender: Harm Gronewold\n" + "1. und 2. Vorsitzender fungieren bis zur Bestätigung durch die nächste Hauptversammlung/Amtsgerichtseintragung ‚kooptiert‘. Der aktuelle Vorstand besteht nur aus der Kassenwartin und der Schriftführerin.\n" + "Kassenwartin: Sandra Bohlen\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t Register Nr.: VR 200882 AUR \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tSchriftführerin: Jessica Detmers\n" + "Gläubiger-ID: DE04ZZZ00002287351 \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t  PayPal-Zahlungen an free.dogs@web.de");
+            nameOfCompany4.SetFontSize(5);
 
             document.Add(newLine);
             document.Add(newLine);
@@ -1084,6 +1115,38 @@ class Example
             document.Add(removeDocuments);
             document.Add(approveContract);
             document.Add(webLinkRequiment);
+            document.Add(PlaceData);
+            document.Add(assign);
+            document.Add(webLink4);
+            document.Add(newLine);
+            document.Add(newLine);
+            document.Add(newLine);
+            document.Add(newLine);
+            document.Add(newLine);
+            document.Add(newLine);
+            document.Add(newLine);
+            document.Add(newLine);
+            document.Add(newLine);
+            document.Add(newLine);
+            document.Add(newLine);
+            document.Add(newLine);
+            document.Add(newLine);
+            document.Add(newLine);
+            document.Add(newLine);
+            document.Add(newLine);
+            document.Add(newLine);
+            document.Add(newLine);
+            document.Add(newLine);
+            document.Add(newLine);
+            document.Add(newLine);
+            document.Add(newLine);
+            document.Add(newLine);
+            document.Add(newLine);
+            document.Add(newLine);
+            document.Add(nameOfCompany4);
+
+            
+
 
 
             form.AddField(whichAnimalsAdditionalyField);
@@ -1096,6 +1159,8 @@ class Example
             form.AddField(contactField);
             form.AddField(removeDocumentsField);
             form.AddField(checkBox);
+            form.AddField(PlaceDataField);
+            form.AddField(assignField);
 
 
 
